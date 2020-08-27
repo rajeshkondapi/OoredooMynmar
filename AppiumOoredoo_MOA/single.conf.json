@@ -1,0 +1,16 @@
+{
+  "server": "hub-cloud.browserstack.com",
+  "user": "rajeshkondapi1",
+  "key": "V8MRVsND9psWijxiDaxY",
+
+  "capabilities": {
+    "name": "Bstack-[TestNG] Sample Test",
+    "browserstack.debug": true
+  },
+
+  "environments": {
+    "chrome": {
+      "browser": "chrome"
+    }
+  }
+}

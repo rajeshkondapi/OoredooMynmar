@@ -1,0 +1,13 @@
+{
+	"capabilities": {
+		"platformVersion": "9",
+		"maxInstances": "3",
+		"platformName": "Android",
+		"automationName": "UiAutomator2",
+		"deviceName": "uiautomatorviewer",
+		"appPackage": "com.ooredoo.selfcare",
+		"appActivity": "com.ooredoo.selfcare.Ooredoo",
+		"name": " OM Sample Test",
+		"AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS": "true"
+	}
+}

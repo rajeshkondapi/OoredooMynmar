@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="2">
+  <test name="testpixels">
+  	<parameter name="config" value="configParallel.json"/>
+  	<parameter name="environment" value="Gpixel"/>
+  	<parameter name="msisdn" value="9971352019"/>
+    <classes>
+      <class name="AndroidAppiumAuto.AppActivity"/>
+    </classes>
+  </test>
+  
+  <test name="testSamsung">
+  	<parameter name="config" value="configParallel.json"/>
+  	<parameter name="environment" value="Samsung"/>
+  	<parameter name="msisdn" value="9971357267"/>
+    <classes>
+      <class name="AndroidAppiumAuto.AppActivity"/>
+    </classes>
+  </test>
+  
+  <test name="testredmi">
+  	<parameter name="config" value="configParallel.json"/>
+  	<parameter name="environment" value="Xiomi"/>
+  	<parameter name="msisdn" value="9953366291"/>
+    <classes>
+      <class name="AndroidAppiumAuto.AppActivity"/>
+    </classes>
+  </test>
+  
+  <test name="testoneplus">
+  	<parameter name="config" value="configParallel.json"/>
+  	<parameter name="environment" value="Oneplus"/>
+  	<parameter name="msisdn" value="9971357267"/>
+    <classes>
+      <class name="AndroidAppiumAuto.AppActivity"/>
+    </classes>
+  </test>
+  
+  <test name="testnexus">
+  	<parameter name="config" value="configParallel.json"/>
+  	<parameter name="environment" value="Nexus"/>
+  	<parameter name="msisdn" value="9971357267"/>
+    <classes>
+      <class name="AndroidAppiumAuto.AppActivity"/>
+    </classes>
+  </test>
+   <!-- Test -->
+</suite> <!-- Suite -->

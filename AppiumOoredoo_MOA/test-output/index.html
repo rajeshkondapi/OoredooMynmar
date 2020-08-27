@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <br/>
+      <span class="top-banner-font-1">1 suite, 6 failed tests</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-Suite">
+              <span class="suite-name border-failed">Suite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-Suite">
+                    <span>D:\Selenium_workspace\AppiumOoredoo_MOA\testng.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-Suite">
+                    <span class="test-stats">5 tests</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-Suite">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-Suite">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-Suite">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-Suite">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-Suite">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">15 methods, 6 failed,  9 skipped,  </span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Suite">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="GetOtp">GetOtp</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="GetOtp">GetOtp</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="LoginPage(9971352019)">LoginPage(9971352019)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="LoginPage(9953366291)">LoginPage(9953366291)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="LoginPage(9971357267)">LoginPage(9971357267)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="LoginPage(9971357267)">LoginPage(9971357267)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title skipped">Skipped methods</span>
+                    <span class="show-or-hide-methods skipped">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods skipped suite-Suite"> (hide)</a> <!-- hide-methods skipped suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods skipped suite-Suite"> (show)</a> <!-- show-methods skipped suite-Suite -->
+                    </span>
+                    <div class="method-list-content skipped suite-Suite">
+                      <span>
+                        <img width="3%" src="skipped.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="GetOtp">GetOtp</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="skipped.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="GetOtp">GetOtp</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="skipped.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="GetOtp">GetOtp</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="skipped.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="LoginPage">LoginPage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="skipped.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="contextpopup">contextpopup</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="skipped.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="contextpopup">contextpopup</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="skipped.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="contextpopup">contextpopup</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="skipped.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="contextpopup">contextpopup</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="skipped.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="AndroidAppiumAuto.AppActivity" hash-for-method="contextpopup">contextpopup</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content skipped suite-Suite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Suite" class="panel Suite">
+          <div class="suite-Suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">AndroidAppiumAuto.AppActivity</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="GetOtp">
+                  </a> <!-- GetOtp -->
+                  <span class="method-name">GetOtp</span>
+                  <div class="stack-trace">org.openqa.selenium.WebDriverException: Session not started or terminated (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {64bit: false, AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS: true, acceptSslCert: false, acceptSslCerts: false, appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, automationName: UiAutomator2, browserstack.appDownloadTimeout: 105, browserstack.is_hub_canary: false, browserstack.minOSVersion: 4.4, bundleID: com.ooredoo.selfcare, bundleId: com.ooredoo.selfcare, chromeOptions: {w3c: false}, detected_language: selenium/3.141.59 (java win..., device: google pixel 4, deviceName: Android, enablePerformanceLogging: false, javascriptEnabled: true, maxInstances: 3, mobile: {browser: mobile, version: Google Pixel 4-10.0}, nativeWebScreenshot: true, newCommandTimeout: 0, new_bucketing: true, orientation: PORTRAIT, orig_os: android, os_version: , platform: ANDROID, platformName: Android, realMobile: true, sessionName:  OM Sample Test, systemPort: 8201, udid: 9B061FFAZ008MH, uiautomator2ServerLaunchTimeout: 60000, version: }
+Session ID: c72ce8bd5b619133e902718e2444de831939eb00
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.back(RemoteWebDriver.java:849)
+	at AndroidAppiumAuto.CommonMethods.otprecive(CommonMethods.java:547)
+	at AndroidAppiumAuto.AppActivity.GetOtp(AppActivity.java:93)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 20 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Fetch OTP)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="GetOtp">
+                  </a> <!-- GetOtp -->
+                  <span class="method-name">GetOtp</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchSessionException: A session is either terminated or not started (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {64bit: false, AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS: true, acceptSslCert: false, acceptSslCerts: false, appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, automationName: UiAutomator2, browserstack.appDownloadTimeout: 105, browserstack.is_hub_canary: false, browserstack.minOSVersion: 4.4, bundleID: com.ooredoo.selfcare, bundleId: com.ooredoo.selfcare, chromeOptions: {w3c: false}, detected_language: selenium/3.141.59 (java win..., device: oneplus 7, deviceName: Android, enablePerformanceLogging: false, javascriptEnabled: true, maxInstances: 3, mobile: {browser: mobile, version: OnePlus 7-9.0}, nativeWebScreenshot: true, newCommandTimeout: 0, new_bucketing: true, orientation: PORTRAIT, orig_os: android, os_version: , platform: ANDROID, platformName: Android, realMobile: true, sessionName:  OM Sample Test, systemPort: 8205, udid: d468c09b, uiautomator2ServerLaunchTimeout: 60000, version: }
+Session ID: a1e44bc49677a7331ebcae4c9baf4dee5ef65bd7
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.back(RemoteWebDriver.java:849)
+	at AndroidAppiumAuto.CommonMethods.otprecive(CommonMethods.java:547)
+	at AndroidAppiumAuto.AppActivity.GetOtp(AppActivity.java:93)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 20 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Fetch OTP)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="LoginPage(9971352019)">
+                  </a> <!-- LoginPage(9971352019) -->
+                  <span class="method-name">LoginPage</span>
+                  <span class="parameters">(9971352019)</span>
+                  <div class="stack-trace">AndroidAppiumAuto.exceptions.CustomException: The Element login could not find from the application please try again !
+	at AndroidAppiumAuto.CommonMethods.AppValidation(CommonMethods.java:192)
+	at AndroidAppiumAuto.AppActivity.LoginPage(AppActivity.java:71)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 16 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Login Pages)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="LoginPage(9953366291)">
+                  </a> <!-- LoginPage(9953366291) -->
+                  <span class="method-name">LoginPage</span>
+                  <span class="parameters">(9953366291)</span>
+                  <div class="stack-trace">AndroidAppiumAuto.exceptions.CustomException: The Element login could not find from the application please try again !
+	at AndroidAppiumAuto.CommonMethods.AppValidation(CommonMethods.java:192)
+	at AndroidAppiumAuto.AppActivity.LoginPage(AppActivity.java:71)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 16 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Login Pages)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="LoginPage(9971357267)">
+                  </a> <!-- LoginPage(9971357267) -->
+                  <span class="method-name">LoginPage</span>
+                  <span class="parameters">(9971357267)</span>
+                  <div class="stack-trace">AndroidAppiumAuto.exceptions.CustomException: The Element login could not find from the application please try again !
+	at AndroidAppiumAuto.CommonMethods.AppValidation(CommonMethods.java:192)
+	at AndroidAppiumAuto.AppActivity.LoginPage(AppActivity.java:71)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 16 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Login Pages)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="LoginPage(9971357267)">
+                  </a> <!-- LoginPage(9971357267) -->
+                  <span class="method-name">LoginPage</span>
+                  <span class="parameters">(9971357267)</span>
+                  <div class="stack-trace">AndroidAppiumAuto.exceptions.CustomException: The Element login could not find from the application please try again !
+	at AndroidAppiumAuto.CommonMethods.AppValidation(CommonMethods.java:192)
+	at AndroidAppiumAuto.AppActivity.LoginPage(AppActivity.java:71)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 16 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Login Pages)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite-class-failed -->
+          <div class="suite-Suite-class-skipped">
+            <div class="main-panel-header rounded-window-top">
+              <img src="skipped.png"/>
+              <span class="class-name">AndroidAppiumAuto.AppActivity</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="GetOtp">
+                  </a> <!-- GetOtp -->
+                  <span class="method-name">GetOtp</span>
+                  <div class="stack-trace">org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: [BROWSERSTACK_INVALID_DEVICE] Incorrect device name &apos;Google Nexus 7&apos; specified for the &apos;device&apos; capability. To view the list of available devices and configure the value for &apos;device&apos; capability, visit our capability builder - https://www.browserstack.com/app-automate/capabilities (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 2.80 seconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: AndroidDriver
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: AndroidDriver
+	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:208)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:217)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:213)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:131)
+	at io.appium.java_client.DefaultGenericMobileDriver.&lt;init&gt;(DefaultGenericMobileDriver.java:38)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:84)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:94)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:95)
+	at AndroidAppiumAuto.AppActivity.launchapp(AppActivity.java:920)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
+	... 32 more
+Caused by: org.openqa.selenium.WebDriverException: [BROWSERSTACK_INVALID_DEVICE] Incorrect device name &apos;Google Nexus 7&apos; specified for the &apos;device&apos; capability. To view the list of available devices and configure the value for &apos;device&apos; capability, visit our capability builder - https://www.browserstack.com/app-automate/capabilities (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 2.80 seconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: AndroidDriver
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.JsonWireProtocolResponse.lambda$errorHandler$0(JsonWireProtocolResponse.java:54)
+	at org.openqa.selenium.remote.HandshakeResponse.lambda$getResponseFunction$0(HandshakeResponse.java:30)
+	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:126)
+	at java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.util.Spliterators$ArraySpliterator.tryAdvance(Unknown Source)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(Unknown Source)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(Unknown Source)
+	at java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(Unknown Source)
+	at java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.util.stream.ReferencePipeline.findFirst(Unknown Source)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:128)
+	... 37 more
+... Removed 24 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Fetch OTP)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="GetOtp">
+                  </a> <!-- GetOtp -->
+                  <span class="method-name">GetOtp</span>
+                  <div class="stack-trace">org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: RemoteWebDriver
+Capabilities {64bit: false, AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS: true, acceptSslCert: false, acceptSslCerts: false, adbExecTimeout: 120000, appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, automationName: UiAutomator2, browserstack.appDownloadTimeout: 105, browserstack.is_hub_canary: false, browserstack.minOSVersion: 4.4, bundleID: com.ooredoo.selfcare, bundleId: com.ooredoo.selfcare, chromeOptions: {w3c: false}, detected_language: selenium/3.141.59 (java win..., device: xiaomi redmi note 7, deviceName: Android, enablePerformanceLogging: false, javascriptEnabled: true, maxInstances: 3, mobile: {browser: mobile, version: Xiaomi Redmi Note 7-9.0}, nativeWebScreenshot: true, newCommandTimeout: 0, new_bucketing: true, orientation: PORTRAIT, orig_os: android, os_version: , platform: ANDROID, platformName: Android, realMobile: true, sessionName:  OM Sample Test, systemPort: 8202, udid: 12a2c424, uiautomator2ServerLaunchTimeout: 60000, version: }
+Session ID: a371e88574756c8538def34328de43481ec581ec
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:573)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at AndroidAppiumAuto.AppActivity.capture(AppActivity.java:833)
+	at AndroidAppiumAuto.AppActivity.getResult(AppActivity.java:823)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalArgumentException: Cannot decode response content: 
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:83)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	... 29 more
+Caused by: org.openqa.selenium.json.JsonException: Expected to read a START_MAP but instead have: END. Last 0 characters read: 
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.json.JsonInput.expect(JsonInput.java:290)
+	at org.openqa.selenium.json.JsonInput.beginObject(JsonInput.java:220)
+	at org.openqa.selenium.json.MapCoercer.lambda$apply$1(MapCoercer.java:64)
+	at org.openqa.selenium.json.JsonTypeCoercer.lambda$null$6(JsonTypeCoercer.java:145)
+	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:126)
+	at org.openqa.selenium.json.ResponseCoercer.lambda$apply$0(ResponseCoercer.java:50)
+	at org.openqa.selenium.json.JsonTypeCoercer.lambda$null$6(JsonTypeCoercer.java:145)
+	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:126)
+	at org.openqa.selenium.json.Json.toType(Json.java:69)
+	at org.openqa.selenium.json.Json.toType(Json.java:55)
+	at org.openqa.selenium.json.Json.toType(Json.java:50)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	... 33 more
+... Removed 19 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Fetch OTP)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="GetOtp">
+                  </a> <!-- GetOtp -->
+                  <span class="method-name">GetOtp</span>
+                  <div class="stack-trace">org.openqa.selenium.WebDriverException: Session not started or terminated (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {64bit: false, AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS: true, acceptSslCert: false, acceptSslCerts: false, appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, automationName: UiAutomator2, browserstack.appDownloadTimeout: 105, browserstack.is_hub_canary: false, browserstack.minOSVersion: 4.4, bundleID: com.ooredoo.selfcare, bundleId: com.ooredoo.selfcare, chromeOptions: {w3c: false}, detected_language: selenium/3.141.59 (java win..., device: samsung galaxy s8, deviceName: Android, enablePerformanceLogging: false, javascriptEnabled: true, maxInstances: 3, mobile: {browser: mobile, version: Samsung Galaxy S8-7.0}, nativeWebScreenshot: true, newCommandTimeout: 0, new_bucketing: true, orientation: PORTRAIT, orig_os: android, os_version: , platform: ANDROID, platformName: Android, realMobile: true, sessionName:  OM Sample Test, systemPort: 8204, udid: ce051715114c110201, uiautomator2ServerLaunchTimeout: 60000, version: }
+Session ID: fa2b93c8079cbdb675af98738f9323753b7a2cd0
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at AndroidAppiumAuto.AppActivity.capture(AppActivity.java:833)
+	at AndroidAppiumAuto.AppActivity.getResult(AppActivity.java:823)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 23 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Fetch OTP)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="LoginPage">
+                  </a> <!-- LoginPage -->
+                  <span class="method-name">LoginPage</span>
+                  <div class="stack-trace">org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: [BROWSERSTACK_INVALID_DEVICE] Incorrect device name &apos;Google Nexus 7&apos; specified for the &apos;device&apos; capability. To view the list of available devices and configure the value for &apos;device&apos; capability, visit our capability builder - https://www.browserstack.com/app-automate/capabilities (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 2.80 seconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: AndroidDriver
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: AndroidDriver
+	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:208)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:217)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:213)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:131)
+	at io.appium.java_client.DefaultGenericMobileDriver.&lt;init&gt;(DefaultGenericMobileDriver.java:38)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:84)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:94)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:95)
+	at AndroidAppiumAuto.AppActivity.launchapp(AppActivity.java:920)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
+	... 32 more
+Caused by: org.openqa.selenium.WebDriverException: [BROWSERSTACK_INVALID_DEVICE] Incorrect device name &apos;Google Nexus 7&apos; specified for the &apos;device&apos; capability. To view the list of available devices and configure the value for &apos;device&apos; capability, visit our capability builder - https://www.browserstack.com/app-automate/capabilities (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 2.80 seconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: AndroidDriver
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.JsonWireProtocolResponse.lambda$errorHandler$0(JsonWireProtocolResponse.java:54)
+	at org.openqa.selenium.remote.HandshakeResponse.lambda$getResponseFunction$0(HandshakeResponse.java:30)
+	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:126)
+	at java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.util.Spliterators$ArraySpliterator.tryAdvance(Unknown Source)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(Unknown Source)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(Unknown Source)
+	at java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(Unknown Source)
+	at java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.util.stream.ReferencePipeline.findFirst(Unknown Source)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:128)
+	... 37 more
+... Removed 24 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Login Pages)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="contextpopup">
+                  </a> <!-- contextpopup -->
+                  <span class="method-name">contextpopup</span>
+                  <div class="stack-trace">org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: [BROWSERSTACK_INVALID_DEVICE] Incorrect device name &apos;Google Nexus 7&apos; specified for the &apos;device&apos; capability. To view the list of available devices and configure the value for &apos;device&apos; capability, visit our capability builder - https://www.browserstack.com/app-automate/capabilities (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 2.80 seconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: AndroidDriver
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: AndroidDriver
+	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:208)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:217)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:213)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:131)
+	at io.appium.java_client.DefaultGenericMobileDriver.&lt;init&gt;(DefaultGenericMobileDriver.java:38)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:84)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:94)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:95)
+	at AndroidAppiumAuto.AppActivity.launchapp(AppActivity.java:920)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+	at io.appium.java_client.remote.AppiumCommandExecutor$1.createSession(AppiumCommandExecutor.java:186)
+	... 32 more
+Caused by: org.openqa.selenium.WebDriverException: [BROWSERSTACK_INVALID_DEVICE] Incorrect device name &apos;Google Nexus 7&apos; specified for the &apos;device&apos; capability. To view the list of available devices and configure the value for &apos;device&apos; capability, visit our capability builder - https://www.browserstack.com/app-automate/capabilities (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 2.80 seconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: AndroidDriver
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.JsonWireProtocolResponse.lambda$errorHandler$0(JsonWireProtocolResponse.java:54)
+	at org.openqa.selenium.remote.HandshakeResponse.lambda$getResponseFunction$0(HandshakeResponse.java:30)
+	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:126)
+	at java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.util.Spliterators$ArraySpliterator.tryAdvance(Unknown Source)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(Unknown Source)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(Unknown Source)
+	at java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(Unknown Source)
+	at java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.util.stream.ReferencePipeline.findFirst(Unknown Source)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:128)
+	... 37 more
+... Removed 24 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Contextual Popup)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="contextpopup">
+                  </a> <!-- contextpopup -->
+                  <span class="method-name">contextpopup</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchSessionException: A session is either terminated or not started (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {64bit: false, AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS: true, acceptSslCert: false, acceptSslCerts: false, appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, automationName: UiAutomator2, browserstack.appDownloadTimeout: 105, browserstack.is_hub_canary: false, browserstack.minOSVersion: 4.4, bundleID: com.ooredoo.selfcare, bundleId: com.ooredoo.selfcare, chromeOptions: {w3c: false}, detected_language: selenium/3.141.59 (java win..., device: google pixel 4, deviceName: Android, enablePerformanceLogging: false, javascriptEnabled: true, maxInstances: 3, mobile: {browser: mobile, version: Google Pixel 4-10.0}, nativeWebScreenshot: true, newCommandTimeout: 0, new_bucketing: true, orientation: PORTRAIT, orig_os: android, os_version: , platform: ANDROID, platformName: Android, realMobile: true, sessionName:  OM Sample Test, systemPort: 8201, udid: 9B061FFAZ008MH, uiautomator2ServerLaunchTimeout: 60000, version: }
+Session ID: c72ce8bd5b619133e902718e2444de831939eb00
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at AndroidAppiumAuto.AppActivity.capture(AppActivity.java:833)
+	at AndroidAppiumAuto.AppActivity.getResult(AppActivity.java:823)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 23 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Contextual Popup)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="contextpopup">
+                  </a> <!-- contextpopup -->
+                  <span class="method-name">contextpopup</span>
+                  <div class="stack-trace">org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: RemoteWebDriver
+Capabilities {64bit: false, AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS: true, acceptSslCert: false, acceptSslCerts: false, adbExecTimeout: 120000, appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, automationName: UiAutomator2, browserstack.appDownloadTimeout: 105, browserstack.is_hub_canary: false, browserstack.minOSVersion: 4.4, bundleID: com.ooredoo.selfcare, bundleId: com.ooredoo.selfcare, chromeOptions: {w3c: false}, detected_language: selenium/3.141.59 (java win..., device: xiaomi redmi note 7, deviceName: Android, enablePerformanceLogging: false, javascriptEnabled: true, maxInstances: 3, mobile: {browser: mobile, version: Xiaomi Redmi Note 7-9.0}, nativeWebScreenshot: true, newCommandTimeout: 0, new_bucketing: true, orientation: PORTRAIT, orig_os: android, os_version: , platform: ANDROID, platformName: Android, realMobile: true, sessionName:  OM Sample Test, systemPort: 8202, udid: 12a2c424, uiautomator2ServerLaunchTimeout: 60000, version: }
+Session ID: a371e88574756c8538def34328de43481ec581ec
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:573)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at AndroidAppiumAuto.AppActivity.capture(AppActivity.java:833)
+	at AndroidAppiumAuto.AppActivity.getResult(AppActivity.java:823)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalArgumentException: Cannot decode response content: 
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:83)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	... 29 more
+Caused by: org.openqa.selenium.json.JsonException: Expected to read a START_MAP but instead have: END. Last 0 characters read: 
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.json.JsonInput.expect(JsonInput.java:290)
+	at org.openqa.selenium.json.JsonInput.beginObject(JsonInput.java:220)
+	at org.openqa.selenium.json.MapCoercer.lambda$apply$1(MapCoercer.java:64)
+	at org.openqa.selenium.json.JsonTypeCoercer.lambda$null$6(JsonTypeCoercer.java:145)
+	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:126)
+	at org.openqa.selenium.json.ResponseCoercer.lambda$apply$0(ResponseCoercer.java:50)
+	at org.openqa.selenium.json.JsonTypeCoercer.lambda$null$6(JsonTypeCoercer.java:145)
+	at org.openqa.selenium.json.JsonTypeCoercer.coerce(JsonTypeCoercer.java:126)
+	at org.openqa.selenium.json.Json.toType(Json.java:69)
+	at org.openqa.selenium.json.Json.toType(Json.java:55)
+	at org.openqa.selenium.json.Json.toType(Json.java:50)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	... 33 more
+... Removed 19 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Contextual Popup)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="contextpopup">
+                  </a> <!-- contextpopup -->
+                  <span class="method-name">contextpopup</span>
+                  <div class="stack-trace">org.openqa.selenium.WebDriverException: Session not started or terminated (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {64bit: false, AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS: true, acceptSslCert: false, acceptSslCerts: false, appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, automationName: UiAutomator2, browserstack.appDownloadTimeout: 105, browserstack.is_hub_canary: false, browserstack.minOSVersion: 4.4, bundleID: com.ooredoo.selfcare, bundleId: com.ooredoo.selfcare, chromeOptions: {w3c: false}, detected_language: selenium/3.141.59 (java win..., device: samsung galaxy s8, deviceName: Android, enablePerformanceLogging: false, javascriptEnabled: true, maxInstances: 3, mobile: {browser: mobile, version: Samsung Galaxy S8-7.0}, nativeWebScreenshot: true, newCommandTimeout: 0, new_bucketing: true, orientation: PORTRAIT, orig_os: android, os_version: , platform: ANDROID, platformName: Android, realMobile: true, sessionName:  OM Sample Test, systemPort: 8204, udid: ce051715114c110201, uiautomator2ServerLaunchTimeout: 60000, version: }
+Session ID: fa2b93c8079cbdb675af98738f9323753b7a2cd0
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at AndroidAppiumAuto.AppActivity.capture(AppActivity.java:833)
+	at AndroidAppiumAuto.AppActivity.getResult(AppActivity.java:823)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 23 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Contextual Popup)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="contextpopup">
+                  </a> <!-- contextpopup -->
+                  <span class="method-name">contextpopup</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchSessionException: A session is either terminated or not started (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.41&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {64bit: false, AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS: true, acceptSslCert: false, acceptSslCerts: false, appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, automationName: UiAutomator2, browserstack.appDownloadTimeout: 105, browserstack.is_hub_canary: false, browserstack.minOSVersion: 4.4, bundleID: com.ooredoo.selfcare, bundleId: com.ooredoo.selfcare, chromeOptions: {w3c: false}, detected_language: selenium/3.141.59 (java win..., device: oneplus 7, deviceName: Android, enablePerformanceLogging: false, javascriptEnabled: true, maxInstances: 3, mobile: {browser: mobile, version: OnePlus 7-9.0}, nativeWebScreenshot: true, newCommandTimeout: 0, new_bucketing: true, orientation: PORTRAIT, orig_os: android, os_version: , platform: ANDROID, platformName: Android, realMobile: true, sessionName:  OM Sample Test, systemPort: 8205, udid: d468c09b, uiautomator2ServerLaunchTimeout: 60000, version: }
+Session ID: a1e44bc49677a7331ebcae4c9baf4dee5ef65bd7
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)
+	at AndroidAppiumAuto.AppActivity.capture(AppActivity.java:833)
+	at AndroidAppiumAuto.AppActivity.getResult(AppActivity.java:823)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 23 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Contextual Popup)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite-class-skipped -->
+        </div> <!-- panel Suite -->
+        <div panel-name="test-xml-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">D:\Selenium_workspace\AppiumOoredoo_MOA\testng.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; parallel=&quot;tests&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;testpixels&quot; parallel=&quot;tests&quot;&gt;
+    &lt;parameter name=&quot;environment&quot; value=&quot;Gpixel&quot;/&gt;
+    &lt;parameter name=&quot;msisdn&quot; value=&quot;9971352019&quot;/&gt;
+    &lt;parameter name=&quot;config&quot; value=&quot;configParallel.json&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;AndroidAppiumAuto.AppActivity&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- testpixels --&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;testSamsung&quot; parallel=&quot;tests&quot;&gt;
+    &lt;parameter name=&quot;environment&quot; value=&quot;Samsung&quot;/&gt;
+    &lt;parameter name=&quot;msisdn&quot; value=&quot;9971357267&quot;/&gt;
+    &lt;parameter name=&quot;config&quot; value=&quot;configParallel.json&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;AndroidAppiumAuto.AppActivity&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- testSamsung --&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;testredmi&quot; parallel=&quot;tests&quot;&gt;
+    &lt;parameter name=&quot;environment&quot; value=&quot;Xiomi&quot;/&gt;
+    &lt;parameter name=&quot;msisdn&quot; value=&quot;9953366291&quot;/&gt;
+    &lt;parameter name=&quot;config&quot; value=&quot;configParallel.json&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;AndroidAppiumAuto.AppActivity&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- testredmi --&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;testoneplus&quot; parallel=&quot;tests&quot;&gt;
+    &lt;parameter name=&quot;environment&quot; value=&quot;Oneplus&quot;/&gt;
+    &lt;parameter name=&quot;msisdn&quot; value=&quot;9971357267&quot;/&gt;
+    &lt;parameter name=&quot;config&quot; value=&quot;configParallel.json&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;AndroidAppiumAuto.AppActivity&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- testoneplus --&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;testnexus&quot; parallel=&quot;tests&quot;&gt;
+    &lt;parameter name=&quot;environment&quot; value=&quot;Nexus&quot;/&gt;
+    &lt;parameter name=&quot;msisdn&quot; value=&quot;9971357267&quot;/&gt;
+    &lt;parameter name=&quot;config&quot; value=&quot;configParallel.json&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;AndroidAppiumAuto.AppActivity&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- testnexus --&gt;
+&lt;/suite&gt; &lt;!-- Suite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">testpixels (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">testSamsung (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">testredmi (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">testoneplus (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">testnexus (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Suite');
+function tableData_Suite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(15);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'LoginPage')
+data.setCell(0, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(0, 3, 31000);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'LoginPage')
+data.setCell(1, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(1, 3, 30940);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'LoginPage')
+data.setCell(2, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(2, 3, 30636);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'GetOtp')
+data.setCell(3, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(3, 3, 21255);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'GetOtp')
+data.setCell(4, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(4, 3, 18435);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'LoginPage')
+data.setCell(5, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(5, 3, 18315);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'LoginPage')
+data.setCell(6, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(6, 3, 0);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'GetOtp')
+data.setCell(7, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(7, 3, 0);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'contextpopup')
+data.setCell(8, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(8, 3, 0);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'contextpopup')
+data.setCell(9, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(9, 3, 0);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'GetOtp')
+data.setCell(10, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(10, 3, 0);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'contextpopup')
+data.setCell(11, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(11, 3, 0);
+data.setCell(12, 0, 12)
+data.setCell(12, 1, 'GetOtp')
+data.setCell(12, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(12, 3, 0);
+data.setCell(13, 0, 13)
+data.setCell(13, 1, 'contextpopup')
+data.setCell(13, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(13, 3, 0);
+data.setCell(14, 0, 14)
+data.setCell(14, 1, 'contextpopup')
+data.setCell(14, 2, 'AndroidAppiumAuto.AppActivity')
+data.setCell(14, 3, 0);
+window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
+              <div id="times-div-Suite">
+              </div> <!-- times-div-Suite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">155 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">AndroidAppiumAuto.AppActivity</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">VIP_Validation</span>
+                <br/>
+                <span class="ignored-method-name">VIP_Validation</span>
+                <br/>
+                <span class="ignored-method-name">VIP_Validation</span>
+                <br/>
+                <span class="ignored-method-name">VIP_Validation</span>
+                <br/>
+                <span class="ignored-method-name">VIP_Validation</span>
+                <br/>
+                <span class="ignored-method-name">CloseTour</span>
+                <br/>
+                <span class="ignored-method-name">CloseTour</span>
+                <br/>
+                <span class="ignored-method-name">CloseTour</span>
+                <br/>
+                <span class="ignored-method-name">CloseTour</span>
+                <br/>
+                <span class="ignored-method-name">CloseTour</span>
+                <br/>
+                <span class="ignored-method-name">TopUpVoucher</span>
+                <br/>
+                <span class="ignored-method-name">TopUpVoucher</span>
+                <br/>
+                <span class="ignored-method-name">TopUpVoucher</span>
+                <br/>
+                <span class="ignored-method-name">TopUpVoucher</span>
+                <br/>
+                <span class="ignored-method-name">TopUpVoucher</span>
+                <br/>
+                <span class="ignored-method-name">BannerDet</span>
+                <br/>
+                <span class="ignored-method-name">BannerDet</span>
+                <br/>
+                <span class="ignored-method-name">BannerDet</span>
+                <br/>
+                <span class="ignored-method-name">BannerDet</span>
+                <br/>
+                <span class="ignored-method-name">BannerDet</span>
+                <br/>
+                <span class="ignored-method-name">accountview</span>
+                <br/>
+                <span class="ignored-method-name">accountview</span>
+                <br/>
+                <span class="ignored-method-name">accountview</span>
+                <br/>
+                <span class="ignored-method-name">accountview</span>
+                <br/>
+                <span class="ignored-method-name">accountview</span>
+                <br/>
+                <span class="ignored-method-name">Report_An_Issue</span>
+                <br/>
+                <span class="ignored-method-name">Report_An_Issue</span>
+                <br/>
+                <span class="ignored-method-name">Report_An_Issue</span>
+                <br/>
+                <span class="ignored-method-name">Report_An_Issue</span>
+                <br/>
+                <span class="ignored-method-name">Report_An_Issue</span>
+                <br/>
+                <span class="ignored-method-name">SpecialVoiceData</span>
+                <br/>
+                <span class="ignored-method-name">SpecialVoiceData</span>
+                <br/>
+                <span class="ignored-method-name">SpecialVoiceData</span>
+                <br/>
+                <span class="ignored-method-name">SpecialVoiceData</span>
+                <br/>
+                <span class="ignored-method-name">SpecialVoiceData</span>
+                <br/>
+                <span class="ignored-method-name">More_Settings</span>
+                <br/>
+                <span class="ignored-method-name">More_Settings</span>
+                <br/>
+                <span class="ignored-method-name">More_Settings</span>
+                <br/>
+                <span class="ignored-method-name">More_Settings</span>
+                <br/>
+                <span class="ignored-method-name">More_Settings</span>
+                <br/>
+                <span class="ignored-method-name">ServiceBanner</span>
+                <br/>
+                <span class="ignored-method-name">ServiceBanner</span>
+                <br/>
+                <span class="ignored-method-name">ServiceBanner</span>
+                <br/>
+                <span class="ignored-method-name">ServiceBanner</span>
+                <br/>
+                <span class="ignored-method-name">ServiceBanner</span>
+                <br/>
+                <span class="ignored-method-name">VIPMyDiscounts</span>
+                <br/>
+                <span class="ignored-method-name">VIPMyDiscounts</span>
+                <br/>
+                <span class="ignored-method-name">VIPMyDiscounts</span>
+                <br/>
+                <span class="ignored-method-name">VIPMyDiscounts</span>
+                <br/>
+                <span class="ignored-method-name">VIPMyDiscounts</span>
+                <br/>
+                <span class="ignored-method-name">VIPRedeemPoints</span>
+                <br/>
+                <span class="ignored-method-name">VIPRedeemPoints</span>
+                <br/>
+                <span class="ignored-method-name">VIPRedeemPoints</span>
+                <br/>
+                <span class="ignored-method-name">VIPRedeemPoints</span>
+                <br/>
+                <span class="ignored-method-name">VIPRedeemPoints</span>
+                <br/>
+                <span class="ignored-method-name">OnlyForYou</span>
+                <br/>
+                <span class="ignored-method-name">OnlyForYou</span>
+                <br/>
+                <span class="ignored-method-name">OnlyForYou</span>
+                <br/>
+                <span class="ignored-method-name">OnlyForYou</span>
+                <br/>
+                <span class="ignored-method-name">OnlyForYou</span>
+                <br/>
+                <span class="ignored-method-name">BuyPackBuy</span>
+                <br/>
+                <span class="ignored-method-name">VIPHomePage</span>
+                <br/>
+                <span class="ignored-method-name">BuyPackBuy</span>
+                <br/>
+                <span class="ignored-method-name">VIPHomePage</span>
+                <br/>
+                <span class="ignored-method-name">BuyPackBuy</span>
+                <br/>
+                <span class="ignored-method-name">VIPHomePage</span>
+                <br/>
+                <span class="ignored-method-name">VIPHomePage</span>
+                <br/>
+                <span class="ignored-method-name">BuyPackBuy</span>
+                <br/>
+                <span class="ignored-method-name">VIPHomePage</span>
+                <br/>
+                <span class="ignored-method-name">BuyPackBuy</span>
+                <br/>
+                <span class="ignored-method-name">GiftPackGift</span>
+                <br/>
+                <span class="ignored-method-name">GiftPackGift</span>
+                <br/>
+                <span class="ignored-method-name">GiftPackGift</span>
+                <br/>
+                <span class="ignored-method-name">GiftPackGift</span>
+                <br/>
+                <span class="ignored-method-name">GiftPackGift</span>
+                <br/>
+                <span class="ignored-method-name">PyawPyawYu</span>
+                <br/>
+                <span class="ignored-method-name">PyawPyawYu</span>
+                <br/>
+                <span class="ignored-method-name">PyawPyawYu</span>
+                <br/>
+                <span class="ignored-method-name">PyawPyawYu</span>
+                <br/>
+                <span class="ignored-method-name">PyawPyawYu</span>
+                <br/>
+                <span class="ignored-method-name">LiveTVDetails</span>
+                <br/>
+                <span class="ignored-method-name">LiveTVDetails</span>
+                <br/>
+                <span class="ignored-method-name">LiveTVDetails</span>
+                <br/>
+                <span class="ignored-method-name">LiveTVDetails</span>
+                <br/>
+                <span class="ignored-method-name">LiveTVDetails</span>
+                <br/>
+                <span class="ignored-method-name">Ooredoo_Play</span>
+                <br/>
+                <span class="ignored-method-name">Ooredoo_Play</span>
+                <br/>
+                <span class="ignored-method-name">Ooredoo_Play</span>
+                <br/>
+                <span class="ignored-method-name">Ooredoo_Play</span>
+                <br/>
+                <span class="ignored-method-name">Ooredoo_Play</span>
+                <br/>
+                <span class="ignored-method-name">chat</span>
+                <br/>
+                <span class="ignored-method-name">chat</span>
+                <br/>
+                <span class="ignored-method-name">chat</span>
+                <br/>
+                <span class="ignored-method-name">chat</span>
+                <br/>
+                <span class="ignored-method-name">chat</span>
+                <br/>
+                <span class="ignored-method-name">QueryBalanceApi</span>
+                <br/>
+                <span class="ignored-method-name">QueryBalanceApi</span>
+                <br/>
+                <span class="ignored-method-name">QueryBalanceApi</span>
+                <br/>
+                <span class="ignored-method-name">QueryBalanceApi</span>
+                <br/>
+                <span class="ignored-method-name">QueryBalanceApi</span>
+                <br/>
+                <span class="ignored-method-name">ByopQueryBalance</span>
+                <br/>
+                <span class="ignored-method-name">ByopQueryBalance</span>
+                <br/>
+                <span class="ignored-method-name">ByopQueryBalance</span>
+                <br/>
+                <span class="ignored-method-name">ByopQueryBalance</span>
+                <br/>
+                <span class="ignored-method-name">ByopQueryBalance</span>
+                <br/>
+                <span class="ignored-method-name">VIPMyPoints</span>
+                <br/>
+                <span class="ignored-method-name">TopUpMPitesan</span>
+                <br/>
+                <span class="ignored-method-name">TopUpMPitesan</span>
+                <br/>
+                <span class="ignored-method-name">VIPMyPoints</span>
+                <br/>
+                <span class="ignored-method-name">TopUpMPitesan</span>
+                <br/>
+                <span class="ignored-method-name">VIPMyPoints</span>
+                <br/>
+                <span class="ignored-method-name">VIPMyPoints</span>
+                <br/>
+                <span class="ignored-method-name">TopUpMPitesan</span>
+                <br/>
+                <span class="ignored-method-name">VIPMyPoints</span>
+                <br/>
+                <span class="ignored-method-name">TopUpMPitesan</span>
+                <br/>
+                <span class="ignored-method-name">UpdateLocation</span>
+                <br/>
+                <span class="ignored-method-name">UpdateLocation</span>
+                <br/>
+                <span class="ignored-method-name">UpdateLocation</span>
+                <br/>
+                <span class="ignored-method-name">UpdateLocation</span>
+                <br/>
+                <span class="ignored-method-name">UpdateLocation</span>
+                <br/>
+                <span class="ignored-method-name">KyoThone</span>
+                <br/>
+                <span class="ignored-method-name">KyoThone</span>
+                <br/>
+                <span class="ignored-method-name">KyoThone</span>
+                <br/>
+                <span class="ignored-method-name">KyoThone</span>
+                <br/>
+                <span class="ignored-method-name">KyoThone</span>
+                <br/>
+                <span class="ignored-method-name">VipSpinWheel</span>
+                <br/>
+                <span class="ignored-method-name">VipSpinWheel</span>
+                <br/>
+                <span class="ignored-method-name">VipSpinWheel</span>
+                <br/>
+                <span class="ignored-method-name">VipSpinWheel</span>
+                <br/>
+                <span class="ignored-method-name">VipSpinWheel</span>
+                <br/>
+                <span class="ignored-method-name">contentPop</span>
+                <br/>
+                <span class="ignored-method-name">contentPop</span>
+                <br/>
+                <span class="ignored-method-name">contentPop</span>
+                <br/>
+                <span class="ignored-method-name">contentPop</span>
+                <br/>
+                <span class="ignored-method-name">contentPop</span>
+                <br/>
+                <span class="ignored-method-name">VIPEarnMorePoints</span>
+                <br/>
+                <span class="ignored-method-name">VIPEarnMorePoints</span>
+                <br/>
+                <span class="ignored-method-name">VIPEarnMorePoints</span>
+                <br/>
+                <span class="ignored-method-name">VIPEarnMorePoints</span>
+                <br/>
+                <span class="ignored-method-name">VIPEarnMorePoints</span>
+                <br/>
+                <span class="ignored-method-name">CssProperties</span>
+                <br/>
+                <span class="ignored-method-name">CssProperties</span>
+                <br/>
+                <span class="ignored-method-name">CssProperties</span>
+                <br/>
+                <span class="ignored-method-name">CssProperties</span>
+                <br/>
+                <span class="ignored-method-name">CssProperties</span>
+                <br/>
+                <span class="ignored-method-name">DDDPacks</span>
+                <br/>
+                <span class="ignored-method-name">DDDPacks</span>
+                <br/>
+                <span class="ignored-method-name">DDDPacks</span>
+                <br/>
+                <span class="ignored-method-name">DDDPacks</span>
+                <br/>
+                <span class="ignored-method-name">DDDPacks</span>
+                <br/>
+                <span class="ignored-method-name">VIPHomePageShortCutIcons</span>
+                <br/>
+                <span class="ignored-method-name">VIPHomePageShortCutIcons</span>
+                <br/>
+                <span class="ignored-method-name">VIPHomePageShortCutIcons</span>
+                <br/>
+                <span class="ignored-method-name">VIPHomePageShortCutIcons</span>
+                <br/>
+                <span class="ignored-method-name">VIPHomePageShortCutIcons</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">AndroidAppiumAuto.AppActivity</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">LoginPage</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">GetOtp</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">contextpopup</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">contextpopup</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">GetOtp</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">contextpopup</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">GetOtp</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">contextpopup</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">contextpopup</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-test before">
+                <span class="method-name">launchapp(configParallel.json, Samsung, 9971357267)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-test before">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">launchapp(configParallel.json, Nexus, 9971357267)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-test before">
+                <span class="method-name">launchapp(configParallel.json, Oneplus, 9971357267)</span>
+                <span class="method-start">1 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-test before">
+                <span class="method-name">launchapp(configParallel.json, Gpixel, 9971352019)</span>
+                <span class="method-start">3 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-test before">
+                <span class="method-name">launchapp(configParallel.json, Xiomi, 9953366291)</span>
+                <span class="method-start">6 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">LoginPage(9971352019)</span>
+                <span class="method-start">28652 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">LoginPage(9971357267)</span>
+                <span class="method-start">38762 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">LoginPage(9953366291)</span>
+                <span class="method-start">47820 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=LoginPage status=FAILURE method=AppActivity.LoginPage(java.lang.String)[pri:1, inst...)</span>
+                <span class="method-start">59596 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">LoginPage(9971357267)</span>
+                <span class="method-start">60037 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">GetOtp</span>
+                <span class="method-start">61679 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=LoginPage status=FAILURE method=AppActivity.LoginPage(java.lang.String)[pri:1, inst...)</span>
+                <span class="method-start">69401 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">GetOtp</span>
+                <span class="method-start">71324 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">getResult([TestResult name=LoginPage status=FAILURE method=AppActivity.LoginPage(java.lang.String)[pri:1, inst...)</span>
+                <span class="method-start">78354 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">getResult([TestResult name=LoginPage status=FAILURE method=AppActivity.LoginPage(java.lang.String)[pri:1, inst...)</span>
+                <span class="method-start">78824 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">getResult([TestResult name=GetOtp status=FAILURE method=AppActivity.GetOtp()[pri:2, instance:AndroidAppiumAuto...)</span>
+                <span class="method-start">82941 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">getResult([TestResult name=GetOtp status=FAILURE method=AppActivity.GetOtp()[pri:2, instance:AndroidAppiumAuto...)</span>
+                <span class="method-start">89764 ms</span>
+              </div> <!-- configuration-method after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+</html>

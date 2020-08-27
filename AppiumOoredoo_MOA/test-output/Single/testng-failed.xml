@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Single]">
+  <test thread-count="5" name="SingleTest(failed)">
+    <parameter name="environment" value="chrome"/>
+    <parameter name="config" value="single.conf.json"/>
+    <classes>
+      <class name="BrowserStack.SingleTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test"/>
+        </methods>
+      </class> <!-- BrowserStack.SingleTest -->
+    </classes>
+  </test> <!-- SingleTest(failed) -->
+</suite> <!-- Failed suite [Single] -->

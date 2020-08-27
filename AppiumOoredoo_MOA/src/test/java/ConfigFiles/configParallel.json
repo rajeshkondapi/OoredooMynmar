@@ -1,0 +1,30 @@
+{
+	"capabilities": {
+		"maxInstances": "2",
+		"platformName": "Android",
+		"automationName": "UiAutomator2",
+		"deviceName": "uiautomatorviewer",
+		"systemPort": "8201",
+		"appPackage": "com.ooredoo.selfcare",
+		"appActivity": "com.ooredoo.selfcare.Ooredoo",
+		"name": " OM Sample Test",
+		"app": "bs://c2ac5aa8329fd54dcfb4e90207afc6dc57600a31"
+	},
+	"environment": {
+		"Gpixel": {
+			"device": "Google Pixel 4"
+		},
+		"Samsung": {
+			"device": "Samsung Galaxy S8"
+		},
+		"Xiomi": {
+			"device": "Xiaomi Redmi Note 7"
+		},
+		"Oneplus": {
+			"device": "OnePlus 7"
+		},
+		"Nexus": {
+			"device": "Google Nexus 7"
+		}
+	}
+}

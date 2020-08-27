@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Local]">
+  <test thread-count="5" name="LocalTest(failed)">
+    <parameter name="environment" value="chrome"/>
+    <parameter name="config" value="single.conf.json"/>
+    <classes>
+      <class name="AndroidAppiumAuto.AppActivity">
+        <methods>
+          <include name="setUp"/>
+          <include name="getResult"/>
+          <include name="tearDown"/>
+          <include name="launchapp"/>
+          <include name="tearDown1"/>
+          <include name="screenShot"/>
+          <include name="QueryBalanceApi"/>
+        </methods>
+      </class> <!-- AndroidAppiumAuto.AppActivity -->
+    </classes>
+  </test> <!-- LocalTest(failed) -->
+</suite> <!-- Failed suite [Local] -->
