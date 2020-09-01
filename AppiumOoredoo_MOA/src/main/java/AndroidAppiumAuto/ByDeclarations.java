@@ -191,10 +191,10 @@ public class ByDeclarations {	//ExtentTest test;
 		try {
 			Dimension dim = driver.manage().window().getSize();
 			// Start from middle of the page
-			Double ScrollheightStart = dim.getHeight() * 0.66;
+			Double ScrollheightStart = dim.getHeight() * 0.60;
 			int scrollStart = ScrollheightStart.intValue();
 			// scroll till 90% of the page
-			Double ScrollheightEnd = dim.getHeight() * 0.3;
+			Double ScrollheightEnd = dim.getHeight() * 0.4;
 			int scrollEnd = ScrollheightEnd.intValue();
 			int width = dim.getWidth();
 			int x = width / 2;		

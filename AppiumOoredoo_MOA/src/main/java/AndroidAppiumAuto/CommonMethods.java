@@ -245,23 +245,18 @@ try {
 		return webList;
 	}
 
-	public String BuyGftSuccess(String packinbuypk, String selectPack, String buygiftoption, String BpartyNum)
+	public String BuyGftSuccess(String packinbuypk, String selectPack, String buygiftoption, String BpartyNum,String BeforeksBalance)
 			throws Exception {
 
 		propertyelements();
-		ClickEvents("HomeIcon");
-		String BeforeksBalance = AppValidation("Qbalance").replaceAll("[^0-9]", "");
+		//ClickEvents("HomeIcon");
+		//String BeforeksBalance = AppValidation("Qbalance").replaceAll("[^0-9]", "");
 
-		System.out.println("BeforeksBalance ==> " + BeforeksBalance);
-
-		Thread.sleep(2000);
-
-		ClickEvents("Buypackicon");
-
-		ClickEvents(selectPack);
-
-		ClickEvents(packinbuypk);
-
+		//System.out.println("BeforeksBalance ==> " + BeforeksBalance);
+		//Thread.sleep(2000);
+		//ClickEvents("Buypackicon");
+		//ClickEvents(selectPack);
+		//ClickEvents(packinbuypk);
 		setOffers();
 
 		if (PacksDetails("tvtitle").get(0) != null && AppValidation(buygiftoption).trim().equalsIgnoreCase("Buy")) {
@@ -311,7 +306,8 @@ try {
 
 			return TopUp;
 
-		} else if (PacksDetails("tvtitle").get(1) != null && AppValidation(buygiftoption).trim().contains("Gift")) {
+		} else if (AppValidation(buygiftoption).trim().equalsIgnoreCase("Gift")) {
+			System.out.println("Entered GIft");
 			ClickEvents(buygiftoption);
 			SendEvent("bpartynum", mpinvalue(BpartyNum, "GiftSheet"));
 
@@ -396,34 +392,24 @@ try {
 
 	protected void setOffers() throws Exception {
 
-		Thread.sleep(2000);
-
 		// ScrollUp();
 		apioffid.clear();
-
 		List<String> datatitle = PacksDetails("tvtitle");
-
 		System.out.println("Set Offers titles ==> " + datatitle);
-
 		System.out.println("datatitle.get(0) ==>" + datatitle.get(0));
-
 		System.out.println("datatitle.get(1) ==>" + datatitle.get(1));
-
 		String data1 = datatitle.get(0).replaceAll("[^a-zA-Z0-9]", ""); // 950 MB for 999 Ks
 		// 950MBforonly999Ks
 		for (String offkey : offDb.keySet()) {
-
 			if (offkey.replaceAll("[^a-zA-Z0-9]", "").equalsIgnoreCase(data1.replaceAll("[^a-zA-Z0-9]", ""))) {
-
 				String offidvalue = offDb.get(offkey);
-
 				System.out.println("offidvalue ==> " + offidvalue);
-
 				apioffid.add(offidvalue.replaceAll("[^a-zA-Z0-9]", ""));
 			}
 		}
 	}
 
+	
 	public void dbdetails(String dropdwn, String querypk) throws Exception {
 		
 		
@@ -461,7 +447,7 @@ try {
 		WebElement showclick = Webdr.findElement(show);
 
 		showclick.click();
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		// Webdr.close();
 	}
 
@@ -657,7 +643,12 @@ try {
 	
 	public String imagedimesions(String dim) {					
 		String dimen = driver.findElement(By.xpath(obj.getProperty(dim))).getSize().toString();	
-		logger.log(LogStatus.INFO, "Dimensions of Image = "+dimen);
+		if(dimen.isEmpty()) {
+			logger.log(LogStatus.FAIL, "No Image/Banner/Icon is available");
+		} else {
+			logger.log(LogStatus.PASS, "Dimensions of Image/Banner/Icon = "+dimen);
+		}
+		
 		return dimen;		
 	}	
 	
@@ -779,7 +770,7 @@ try {
 		ClickEvents("okspin");
 	}
 	
-public void Swipe(int numoftimes, String xycord) {
+public void Swipe(int numoftimes, String xycord, int endpoint) {
 	
 	//if(!driver.findElements(By.xpath(obj.getProperty("Entertmntbanners"))).isEmpty()) {
 	MobileElement bann = driver.findElement(By.xpath(obj.getProperty(xycord)));
@@ -795,7 +786,7 @@ public void Swipe(int numoftimes, String xycord) {
 		for(int map=1; map<=numoftimes;map++) {
 		int anchor = (int) (xax); // x-axis
 		int startPoint = (int) (yax); // y-axis
-		int endPoint = (int) (65); // x-axis end
+		int endPoint = (int) (endpoint); // x-axis end
 		TouchAction tou = new TouchAction((AndroidDriver) driver);		
 			tou.press(PointOption.point(anchor, startPoint))
 					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
@@ -810,7 +801,7 @@ public void Swipe(int numoftimes, String xycord) {
 			vipclickupdate();
 			scrolltill("EarnmorepointTitles","Earn More Points");
 			Thread.sleep(5000);
-			Swipe(3,"EarnmorepointTitles");
+			Swipe(3,"EarnmorepointTitles",65);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -984,6 +975,25 @@ public void Swipe(int numoftimes, String xycord) {
 		
 		
 	}
+	
+	public void MyBenefits() throws Exception {
+		vipclickupdate();
+		scrolltill("knowmore>", "Know more >");
+		imagedimesions("MyBenefitsIcon");
+		String colorofelement = driver.findElement(By.xpath(obj.getProperty("MyBenefitsIcon"))).getCssValue("style");
+		System.out.println("colorofelement = "+colorofelement);
+		String desc = AppValidation("MyDiscountDesc");
+		if(desc.isEmpty()) {
+			logger.log(LogStatus.FAIL, "Description is not available");
+		} else {
+			logger.log(LogStatus.PASS, "My Benefits Description : "+desc);
+		}		
+		
+		ClickEvents("knowmore>");
+	}
+	
+	
+	
 		
 	
 	

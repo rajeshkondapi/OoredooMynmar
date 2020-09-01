@@ -7,7 +7,6 @@
 		"deviceName": "uiautomatorviewer",
 		"appPackage": "com.ooredoo.selfcare",
 		"appActivity": "com.ooredoo.selfcare.Ooredoo",
-		"name": " OM Sample Test",
-		"AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS": "true"
+		"name": " OM Sample Test"
 	}
 }

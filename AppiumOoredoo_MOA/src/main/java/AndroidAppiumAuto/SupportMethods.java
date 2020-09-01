@@ -37,8 +37,8 @@ import io.appium.java_client.touch.offset.PointOption;
 public class SupportMethods extends HomePageAPI {
 
 	List<String> bb = new ArrayList<>();	
-	
-	
+
+
 	public boolean HomePageSlideImage() throws Exception {
 
 		String starticon = driver.getDeviceTime();
@@ -218,16 +218,16 @@ public class SupportMethods extends HomePageAPI {
 
 
 		/*if(livdetailsAPI==null || livdetailsAPI.isEmpty()){
-			System.out.println("Null/Empty returned from API");
-		}
+	System.out.println("Null/Empty returned from API");
+}
 
-		int apicount = livdetailsAPI.size();
+int apicount = livdetailsAPI.size();
 
-		if(apicount!=liveiconssize) {
-			logger.log(LogStatus.FAIL, "Test Case Failed due to mismatch in livetv count from api to app : Count from API Request is = "+apicount+  "  Count from App is = "+liveiconssize);
-		} else {
-			logger.log(LogStatus.PASS, "Test Case Passed is LiveTVDetails "+livdetailsAPI);
-		}*/
+if(apicount!=liveiconssize) {
+	logger.log(LogStatus.FAIL, "Test Case Failed due to mismatch in livetv count from api to app : Count from API Request is = "+apicount+  "  Count from App is = "+liveiconssize);
+} else {
+	logger.log(LogStatus.PASS, "Test Case Passed is LiveTVDetails "+livdetailsAPI);
+}*/
 
 
 		/*
@@ -307,7 +307,7 @@ public class SupportMethods extends HomePageAPI {
 
 		int d = AppValidationImageList("Entertmntbanners"); // app count 
 
-// API calling
+		// API calling
 		List<String> ETdetailsAPI = ETLiveTransApi("GetEntertainmentService", "promotions", "1571803395757", obj.getProperty("apiversion"), "vasdetails", obj.getProperty("apiuri"), "title", "");
 		System.out.println("ETdetailsAPI ==>" + ETdetailsAPI);
 		if (ETdetailsAPI == null || ETdetailsAPI.isEmpty() || ETdetailsAPI.contains("No record found") ) {
@@ -559,39 +559,22 @@ return "ET Count Success";
 			// Title
 			datapacksTitle = PacksDetails("tvtitle");
 			buypk.addAll(datapacksTitle);
-
 			// Validity
 			List<String> buypkdatavalidity = PacksDetails("buypkdatavalidity");
-
-
 			// Buy
 			List<String> buypackBuy = PacksDetails("buypackBuy");
-
-
 			// Gift
 			List<String> buypackGift = PacksDetails("buypackGift");
-
-
 			swipeByElements();// --uday
-
-			Thread.sleep(3000);
-
+			//Thread.sleep(3000);
 			buysize = buysize + 1;
-
 			System.out.println("Validation in Process ==>" + buysize);
-
 		}
-
-		while (buysize <= 7);
-
+		while (buysize <= 6);
 		System.out.println("buypk Titiless==>"+buypk);
-
 		Set<String> set = new HashSet<String>(buypk);
-
 		set.addAll(buypk);
-
 		System.out.println("Set Values after converting ==>"+set);
-
 		Set<String> setFinal = new HashSet<>();
 		//String val = "hi hello prince";
 		for(String str : set){
@@ -603,8 +586,6 @@ return "ET Count Success";
 
 
 		System.out.println("Remove Duplicates ==>" + setFinal);
-
-
 		// offsetnameid == db validation
 		Map<String, String> offersFromDb = offsetnameid();
 
@@ -658,18 +639,21 @@ return "ET Count Success";
 	public boolean bygft(String buygiftoption, String SheetKey) throws Exception {
 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		String BeforeksBalance = AppValidation("Qbalance").replaceAll("[^0-9]", "");
+
+		String BeforeksBalance = AppValidation("HOME_USER_POINTS").replaceAll("[^0-9]", "").replaceAll("[^a-zA-Z0-9]", "");
 		System.out.println("BeforeksBalance ==> " + BeforeksBalance);
+
+		// TODO Auto-generated catch block
+
 		//ClickEvents("Buypackicon");
 		ClickEvents("PacksIcon");
-		
-		String[] bpivr = new String[] {"bpinternet","tinekya", "bpvoice", "bpRoam"}; //"bpinternet","tinekya", "bpvoice", "bpRoam",
+
+		String[] bpivr = new String[] {"bpinternet","tinekya"};//{"bpinternet","tinekya", "bpvoice", "bpRoam"}; //"bpinternet","tinekya", "bpvoice", "bpRoam",
 		String[] bpdcfx = new String[] {"bpdata"};//, "bpcombo", "bpfacebook"};// "bpdata", "bpcombo", "bpfacebook"
 		String[] bponanin = new String[] {"bponNetPk"};//, "bpAnyNetPk","bpInternational"};//"bponNetPk", "bpAnyNetPk","bpInternational"
 		String[] bptsiirq = new String[] {"bprmthai"};//, "bprmsinga", "bprmIndia", "bprmIndone"};//"bprmthai", "bprmsinga", "bprmIndia", "bprmIndone", "bprmRussia","bprmQatar"
 		int bpinternetbuy = 0;
 		int bpinternetgift = 0;
-
 		int bpvoicebuy = 0;
 		int bpvoicegift = 0;
 		int bpRoamBuy = 0;
@@ -681,56 +665,42 @@ return "ET Count Success";
 			for (int pkIVR = 0; pkIVR < bpivr.length; pkIVR++) {
 
 				ClickEvents(bpivr[pkIVR]);
-
-				/* ------------------------------- BYOP Packs ----------------------
-				 * 
-				 *  x= 810, 275
-		y= 1087, 1085
-		x= 772, 375
-		y= 1333, 1331
-		x= 775, 272
-		y= 1578, 1605
-				 *  
-				 *  
-				 *  */
-
 				if (bpivr[pkIVR].contains("tinekya")) {
-
 					//logger = extent.startTest("tinekya", "Description to State Tine Kya");
-					Thread.sleep(3000);
-
-					swiperighticons("statetine", 810, 996, 180);
 					Thread.sleep(1000);
-					swiperighticons("statetine", 826, 1236, 180);
+					//swiperighticons("statetine", 810, 996, 180);					
+					Swipe(1, "statetine1",150);					
 					Thread.sleep(1000);
-					swiperighticons("statetine", 825, 1501, 180);
-					swipeByElements();
-					Thread.sleep(2000);
+					//swiperighticons("statetine", 826, 1236, 180);
+					Swipe(1, "statetine2",150);
+					Thread.sleep(1000);
+					//swiperighticons("statetine", 825, 1501, 180);
+					Swipe(1, "statetine3",150);					
+					//Thread.sleep(2000);
 					String Validity = AppValidation("Validity");
 					System.out.println("Validity ==>" + Validity);
-					Thread.sleep(2000);
+					//Thread.sleep(2000);
 					String PackPrice = AppValidation("packprice");
 					System.out.println("packprice ==>" + PackPrice + " Ks");
-					Thread.sleep(2000);
+					//Thread.sleep(2000);
+					//swipeByElements();
 					String SavedPrice = AppValidation("savedprice");
 					System.out.println("savedprice ==>" + SavedPrice + " Ks");
-					Thread.sleep(2000);
+					//Thread.sleep(2000);
 					String SavedPercentage = AppValidation("savedperc");
 					System.out.println("savedperc ==>" + SavedPercentage);
-					Thread.sleep(2000);
+					swipeByElements();
+
 					//ClickEvents("giftproceed");
 
 					/*	try {
-		if(AppValidation("buynowok").equalsIgnoreCase("Buy Now")) {
-			ClickEvents("toppopcancel");
-		}
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}*/
-
-
-
+	if(AppValidation("buynowok").equalsIgnoreCase("Buy Now")) {
+		ClickEvents("toppopcancel");
+	}
+} catch (Exception e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}*/
 					if (buygiftoption.equalsIgnoreCase("buypackBuy")) {
 
 						ClickEvents("Jobs_Subscribe_now_button");
@@ -796,43 +766,38 @@ return "ET Count Success";
 						getResult1("pass");
 
 					}
-					boolean topupbyop = AppValidation("TopUpText").equalsIgnoreCase("Top Up");
+					//boolean topupbyop = AppValidation("TopUpText").equalsIgnoreCase("Topup");
+					/*//if(topupbyop) {
+	logger.log(LogStatus.PASS, "State Tine Kya Reached to Top Up Page ");
+	getResult1("pass");
 
+} else {
+	logger.log(LogStatus.FAIL, "State Tine Kya Failed to Reach Top Up Page");
+}*/
 					istinekyatopupbuy++;
-					ClickEvents("Buypackicon");
+					//ClickEvents("Buypackicon");
+					ClickEvents("PacksIcon");
+					ClickEvents("tinekya");
 					//Assert.assertTrue(topupbyop);
-					if(topupbyop) {
-						logger.log(LogStatus.PASS, "State Tine Kya Reached to Top Up Page ");
-						getResult1("pass");
 
-					} else {
-						logger.log(LogStatus.FAIL, "State Tine Kya Failed to Reach Top Up Page");
-					}
 
 
 					/*//
-				istinekyatopupgift++;								
-				if(istinekyatopupgift == 1) {
-					logger.log(LogStatus.PASS, "State Tine Kya (Gift Functionality) Reached to Top Up Page");
-				}else {
-					logger.log(LogStatus.FAIL, "State Tine Kya (Gift Functionality) Failed to Reach Top Up Page");
-				}	*/				
+istinekyatopupgift++;								
+if(istinekyatopupgift == 1) {
+	logger.log(LogStatus.PASS, "State Tine Kya (Gift Functionality) Reached to Top Up Page");
+}else {
+	logger.log(LogStatus.FAIL, "State Tine Kya (Gift Functionality) Failed to Reach Top Up Page");
+}	*/				
 
 
 				}
-
-
-
-
-
 
 				/* ------------------------------- Internet Packs ---------------------- */
 
 				else if (bpivr[pkIVR].trim().contains("bpinternet")) {
 					for (int intdcfx = 0; intdcfx < bpdcfx.length; intdcfx++) {
-
 						ClickEvents(bpdcfx[intdcfx]);
-
 						//logger = extent.startTest(bpdcfx[intdcfx], "Description to ="+bpdcfx[intdcfx]);
 						dbdetails("Dropdown2", "datapakquery" + intdcfx);
 						MatchDataPacks(bpdcfx[intdcfx]);							
@@ -840,27 +805,28 @@ return "ET Count Success";
 
 						if (buygiftoption.trim().equalsIgnoreCase("buypackBuy")) {
 
-							String appbuypack = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, SheetKey);
+							String appbuypack = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, SheetKey,BeforeksBalance);
 
-							//String buypackapi = ETLiveTransApi("SetOffer", "OfferActivation", "1571725474863",obj.getProperty("apiversion"), "status_desc", obj.getProperty("apiuri"), "", "").get(0);						
+							String buypackapi = ETLiveTransApi("SetOffer", "OfferActivation", "1571725474863",obj.getProperty("apiversion"), "status_desc", obj.getProperty("apiuri"), "", "").get(0);						
 							//ecarepreprod.ooredoo.com.mm/selfcareapistg7.1/api/
 
-							//boolean buysuccess = appbuypack.equalsIgnoreCase(buypackapi);
-
-							String rslt = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, "Valid");
+							boolean buysuccess = appbuypack.equalsIgnoreCase(buypackapi);
+							System.out.println("bpdcfx[intdcfx] = "+bpdcfx[intdcfx]);
+							System.out.println("bpivr[pkIVR] = "+bpivr[pkIVR]);
+							String rslt = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, "Valid",BeforeksBalance);
 							if(rslt.isEmpty()) {
 								logger.log(LogStatus.FAIL, "failed is Internet Buy for = " +bpdcfx[intdcfx]);
 							} else {
 								logger.log(LogStatus.PASS, "Passed is Internet Buy for = " +bpdcfx[intdcfx]);
 							}
-							
-							/*boolean buysuccess = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, "Valid")
-					.equalsIgnoreCase(ETLiveTransApi("SetOffer", "OfferActivation", "1571725474863",
-							"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", "").get(0));
-							 */
-							//Assert.assertTrue(buysuccess);	
 
-							/*if(buysuccess) {
+							/*boolean buysuccess = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, "Valid")
+.equalsIgnoreCase(ETLiveTransApi("SetOffer", "OfferActivation", "1571725474863",
+		"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", "").get(0));
+							 */
+							//Assert.assertTrue(buysuccess);
+
+							if(buysuccess) {
 								logger.log(LogStatus.PASS, "Passed is Internet Buy for = " +bpdcfx[intdcfx]);
 								//System.out.println("Internet Buy Matched for  = "+bpdcfx[intdcfx]);
 							}else {
@@ -869,7 +835,7 @@ return "ET Count Success";
 								logger.log(LogStatus.FAIL, "API Response = "+buypackapi);
 								logger.log(LogStatus.FAIL, "APP POP UP MESSAGE = "+appbuypack);
 
-							}*/
+							}
 
 
 							//logger.log(LogStatus.PASS, "Test Case Passed is Internet Buy" +bpinternetbuy++ +"  "+bpdcfx[intdcfx]);
@@ -879,19 +845,19 @@ return "ET Count Success";
 							//logger.log(LogStatus.FAIL, "Test Case (Internet Buy) Status is passed");
 
 
-						} else if (buygiftoption.trim().equalsIgnoreCase("buypackGift")) {
+						} else if (buygiftoption.trim().equalsIgnoreCase("buypackGift")) { 
+							System.out.println("in buy gift");
 
-
-							String buygftapp = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, SheetKey).trim();
+							String buygftapp = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, SheetKey,BeforeksBalance).trim();
 							//ecarepreprod.ooredoo.com.mm/selfcareapistg7.1/api/
 							String buygftapi = ETLiveTransApi("GiftPackOffer", "GiftPack", "1571725474863",obj.getProperty("apiversion"), "status_desc", obj.getProperty("apiuri"), "", SheetKey).get(0);
 
 							boolean giftcheck = buygftapp.equalsIgnoreCase(buygftapi);
 							/*
-			boolean giftcheck = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, SheetKey)
-					.trim()
-					.equalsIgnoreCase(ETLiveTransApi("GiftPackOffer", "GiftPack", "1571725474863",
-							"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", SheetKey).get(0));*/
+boolean giftcheck = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, SheetKey)
+		.trim()
+		.equalsIgnoreCase(ETLiveTransApi("GiftPackOffer", "GiftPack", "1571725474863",
+				"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", SheetKey).get(0));*/
 
 							//bpinternetgift++;
 
@@ -913,22 +879,23 @@ return "ET Count Success";
 
 				else if (bpivr[pkIVR].trim().contains("bpvoice")) {
 					for (int r = 0; r < bponanin.length; r++) {
+						//ClickEvents(bponanin[r-1]);
 						ClickEvents(bponanin[r]);
-						dbdetails("Dropdown2", "VoicePakQuery" + r);
-						MatchDataPacks(bponanin[r]);
-						ScrollUp();
+						//dbdetails("Dropdown2", "VoicePakQuery" + r);
+						//MatchDataPacks(bponanin[r]);
+						//ScrollUp();
 
 						if (buygiftoption.trim().equalsIgnoreCase("buypackBuy")) {
 
-							String buyvoiceapp = BuyGftSuccess(bponanin[r], bpivr[pkIVR], buygiftoption,SheetKey).trim();
+							String buyvoiceapp = BuyGftSuccess(bponanin[r], bpivr[pkIVR], buygiftoption,SheetKey,BeforeksBalance).trim();
 							//ecarepreprod.ooredoo.com.mm/selfcareapistg7.1/api/
 							String buyvoiceapi = ETLiveTransApi("SetOffer", "OfferActivation", "1571725474863",obj.getProperty("apiversion"), "status_desc", obj.getProperty("apiuri"), "", "").get(0);
 
 							boolean buyvoicecheck = buyvoiceapp.equalsIgnoreCase(buyvoiceapi);
 
 							/*boolean buyvoicecheck = BuyGftSuccess(bponanin[r], bpivr[pkIVR], buygiftoption, "Valid")
-					.equalsIgnoreCase(ETLiveTransApi("SetOffer", "OfferActivation", "1571725474863",
-							"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", "").get(0));*/
+.equalsIgnoreCase(ETLiveTransApi("SetOffer", "OfferActivation", "1571725474863",
+		"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", "").get(0));*/
 
 							//Assert.assertTrue(buyvoicecheck);
 							// Assert.fail();
@@ -947,7 +914,7 @@ return "ET Count Success";
 
 						} else if (buygiftoption.trim().equalsIgnoreCase("buypackGift")) {
 
-							String app = BuyGftSuccess(bponanin[r], bpivr[pkIVR], buygiftoption, SheetKey).trim();
+							String app = BuyGftSuccess(bponanin[r], bpivr[pkIVR], buygiftoption, SheetKey,BeforeksBalance).trim();
 
 							//ecarepreprod.ooredoo.com.mm/selfcareapistg7.1/api/
 							String api = ETLiveTransApi("GiftPackOffer", "GiftPack", "1571725474863",obj.getProperty("apiversion"), "status_desc", obj.getProperty("apiuri"), "", SheetKey).get(0);
@@ -956,8 +923,8 @@ return "ET Count Success";
 							boolean giftvoicecheck = app.equalsIgnoreCase(api);
 
 							/*boolean giftvoicecheck = BuyGftSuccess(bpdcfx[r], bpivr[pkIVR], buygiftoption, SheetKey)
-					.trim().equalsIgnoreCase(ETLiveTransApi("GiftPackOffer", "GiftPack", "1571725474863",
-							"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", SheetKey).get(0));*/
+.trim().equalsIgnoreCase(ETLiveTransApi("GiftPackOffer", "GiftPack", "1571725474863",
+		"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", SheetKey).get(0));*/
 							bpvoicegift++;
 
 							if(giftvoicecheck)
@@ -990,15 +957,15 @@ return "ET Count Success";
 
 						if (buygiftoption.trim().equalsIgnoreCase("buypackBuy")) {
 
-							String RoamApp = BuyGftSuccess(bptsiirq[t], bpivr[pkIVR], buygiftoption, SheetKey).trim();
+							String RoamApp = BuyGftSuccess(bptsiirq[t], bpivr[pkIVR], buygiftoption, SheetKey,BeforeksBalance).trim();
 							//ecarepreprod.ooredoo.com.mm/selfcareapistg7.1/api/
 							String RoamApi = ETLiveTransApi("SetOffer", "OfferActivation", "1571725474863", obj.getProperty("apiversion"), "status_desc", obj.getProperty("apiuri"), "", "").get(0);
 
 							boolean roambuycheck = RoamApp.equalsIgnoreCase(RoamApi);
 
 							/*	boolean roambuycheck = BuyGftSuccess(bptsiirq[t], bpivr[pkIVR], buygiftoption, "Valid")
-					.equalsIgnoreCase(ETLiveTransApi("SetOffer", "OfferActivation", "1571725474863",
-							"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", "").get(0));*/
+.equalsIgnoreCase(ETLiveTransApi("SetOffer", "OfferActivation", "1571725474863",
+		"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", "").get(0));*/
 							bpRoamBuy++;
 							if(roambuycheck) {
 								logger.log(LogStatus.PASS, "Buy Functionality Passed is for = "+bptsiirq[t]);
@@ -1013,15 +980,15 @@ return "ET Count Success";
 
 						} else if (buygiftoption.trim().equalsIgnoreCase("buypackGift")) {
 
-							String RoamGiftApp = BuyGftSuccess(bptsiirq[t], bpivr[pkIVR], buygiftoption, SheetKey).trim();
+							String RoamGiftApp = BuyGftSuccess(bptsiirq[t], bpivr[pkIVR], buygiftoption, SheetKey,BeforeksBalance).trim();
 							//ecarepreprod.ooredoo.com.mm/selfcareapistg7.1/api/
 							String RoamGiftApi = ETLiveTransApi("GiftPackOffer", "GiftPack", "1571725474863",obj.getProperty("apiversion"), "status_desc", obj.getProperty("apiuri"), "", SheetKey).get(0);
 
 							boolean roamgiftcheck = RoamGiftApp.equalsIgnoreCase(RoamGiftApi);
 
 							/*boolean roamgiftcheck = BuyGftSuccess(bpdcfx[t], bpivr[pkIVR], buygiftoption, SheetKey).trim()
-					.equalsIgnoreCase(ETLiveTransApi("GiftPackOffer", "GiftPack", "1571725474863",
-							"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", SheetKey).get(0));*/
+.equalsIgnoreCase(ETLiveTransApi("GiftPackOffer", "GiftPack", "1571725474863",
+		"SelfcareAPI7.0", "status_desc", "ecarepreprod", "", SheetKey).get(0));*/
 
 							Assert.assertTrue(roamgiftcheck);
 							bpRoamGift++;
@@ -1064,7 +1031,7 @@ return "ET Count Success";
 
 
 
-	
+
 
 	public void scrollUpTill(String ActualApp, String Expected) throws Exception {
 
@@ -1658,7 +1625,7 @@ else {
 	}
 
 
-	
+
 
 	public void contextmethod() throws Exception {
 

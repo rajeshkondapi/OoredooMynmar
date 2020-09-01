@@ -1,41 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
-  <test thread-count="5" name="testnexus(failed)" parallel="tests">
-    <parameter name="environment" value="Nexus"/>
-    <parameter name="msisdn" value="9971357267"/>
-    <parameter name="config" value="configParallel.json"/>
-    <classes>
-      <class name="AndroidAppiumAuto.AppActivity">
-        <methods>
-          <include name="getResult"/>
-          <include name="launchapp"/>
-          <include name="LoginPage"/>
-          <include name="tearDown"/>
-          <include name="contextpopup"/>
-          <include name="GetOtp"/>
-        </methods>
-      </class> <!-- AndroidAppiumAuto.AppActivity -->
-    </classes>
-  </test> <!-- testnexus(failed) -->
-  <test thread-count="5" name="testpixels(failed)" parallel="tests">
-    <parameter name="environment" value="Gpixel"/>
-    <parameter name="msisdn" value="9971352019"/>
-    <parameter name="config" value="configParallel.json"/>
-    <classes>
-      <class name="AndroidAppiumAuto.AppActivity">
-        <methods>
-          <include name="getResult"/>
-          <include name="launchapp"/>
-          <include name="LoginPage" invocation-numbers="0"/>
-          <include name="tearDown"/>
-          <include name="contextpopup"/>
-          <include name="GetOtp"/>
-        </methods>
-      </class> <!-- AndroidAppiumAuto.AppActivity -->
-    </classes>
-  </test> <!-- testpixels(failed) -->
-  <test thread-count="5" name="testredmi(failed)" parallel="tests">
+<suite thread-count="3" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
+  <test thread-count="3" name="testredmi(failed)" parallel="tests">
     <parameter name="environment" value="Xiomi"/>
     <parameter name="msisdn" value="9953366291"/>
     <parameter name="config" value="configParallel.json"/>
@@ -43,33 +9,18 @@
       <class name="AndroidAppiumAuto.AppActivity">
         <methods>
           <include name="getResult"/>
+          <include name="TopUpVoucher"/>
           <include name="launchapp"/>
-          <include name="LoginPage" invocation-numbers="0"/>
+          <include name="LoginPage"/>
           <include name="tearDown"/>
           <include name="contextpopup"/>
+          <include name="VIPHomePage"/>
           <include name="GetOtp"/>
         </methods>
       </class> <!-- AndroidAppiumAuto.AppActivity -->
     </classes>
   </test> <!-- testredmi(failed) -->
-  <test thread-count="5" name="testSamsung(failed)" parallel="tests">
-    <parameter name="environment" value="Samsung"/>
-    <parameter name="msisdn" value="9971357267"/>
-    <parameter name="config" value="configParallel.json"/>
-    <classes>
-      <class name="AndroidAppiumAuto.AppActivity">
-        <methods>
-          <include name="getResult"/>
-          <include name="launchapp"/>
-          <include name="LoginPage" invocation-numbers="0"/>
-          <include name="tearDown"/>
-          <include name="contextpopup"/>
-          <include name="GetOtp"/>
-        </methods>
-      </class> <!-- AndroidAppiumAuto.AppActivity -->
-    </classes>
-  </test> <!-- testSamsung(failed) -->
-  <test thread-count="5" name="testoneplus(failed)" parallel="tests">
+  <test thread-count="3" name="testoneplus(failed)" parallel="tests">
     <parameter name="environment" value="Oneplus"/>
     <parameter name="msisdn" value="9971357267"/>
     <parameter name="config" value="configParallel.json"/>
@@ -77,13 +28,64 @@
       <class name="AndroidAppiumAuto.AppActivity">
         <methods>
           <include name="getResult"/>
+          <include name="TopUpVoucher"/>
           <include name="launchapp"/>
-          <include name="LoginPage" invocation-numbers="0"/>
+          <include name="LoginPage"/>
           <include name="tearDown"/>
           <include name="contextpopup"/>
+          <include name="VIPHomePage"/>
           <include name="GetOtp"/>
         </methods>
       </class> <!-- AndroidAppiumAuto.AppActivity -->
     </classes>
   </test> <!-- testoneplus(failed) -->
+  <test thread-count="3" name="testnexus(failed)" parallel="tests">
+    <parameter name="environment" value="Nexus"/>
+    <parameter name="msisdn" value="9971357267"/>
+    <parameter name="config" value="configParallel.json"/>
+    <classes>
+      <class name="AndroidAppiumAuto.AppActivity">
+        <methods>
+          <include name="getResult"/>
+          <include name="TopUpVoucher"/>
+          <include name="launchapp"/>
+          <include name="LoginPage"/>
+          <include name="tearDown"/>
+          <include name="contextpopup"/>
+          <include name="VIPHomePage"/>
+          <include name="GetOtp"/>
+        </methods>
+      </class> <!-- AndroidAppiumAuto.AppActivity -->
+    </classes>
+  </test> <!-- testnexus(failed) -->
+  <test thread-count="3" name="testpixels(failed)" parallel="tests">
+    <parameter name="environment" value="Gpixel"/>
+    <parameter name="msisdn" value="9971352019"/>
+    <parameter name="config" value="configParallel.json"/>
+    <classes>
+      <class name="AndroidAppiumAuto.AppActivity">
+        <methods>
+          <include name="getResult"/>
+          <include name="TopUpVoucher" invocation-numbers="0"/>
+          <include name="launchapp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- AndroidAppiumAuto.AppActivity -->
+    </classes>
+  </test> <!-- testpixels(failed) -->
+  <test thread-count="3" name="testSamsung(failed)" parallel="tests">
+    <parameter name="environment" value="Samsung"/>
+    <parameter name="msisdn" value="9971357267"/>
+    <parameter name="config" value="configParallel.json"/>
+    <classes>
+      <class name="AndroidAppiumAuto.AppActivity">
+        <methods>
+          <include name="getResult"/>
+          <include name="TopUpVoucher" invocation-numbers="0"/>
+          <include name="launchapp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- AndroidAppiumAuto.AppActivity -->
+    </classes>
+  </test> <!-- testSamsung(failed) -->
 </suite> <!-- Failed suite [Suite] -->

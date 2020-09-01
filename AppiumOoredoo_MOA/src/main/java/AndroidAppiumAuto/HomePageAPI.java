@@ -730,18 +730,11 @@ public class HomePageAPI extends CommonMethods {
 		apirespETL.clear();
 		System.out.println("ETLiveTr ==>"+ETLiveTr);
 		RestAssured.baseURI = "http://" + uri + ".ooredoo.com.mm/" + Ver + "/api/" + ProTran+"/"+ETLiveTr;
-
 		System.out.println("RestAssured.baseURI ==> " + RestAssured.baseURI);
-
 		logger.log(LogStatus.INFO, "URL = "+RestAssured.baseURI);
-
 		RequestSpecification request = RestAssured.given();	
-
-
 		if(ETLiveTr.trim().equalsIgnoreCase("MpitesenPayment")) {
-
 			System.out.println("Entered api");
-
 			request.header("X-IMI-OAUTH", LogiSessionid());
 			request.header("X-IMI-HASH", SessionHashKeyETLiveTrans(ETLiveTranBody(ETLiveTr, TopSendPin)));
 			request.header("X-IMI-App-User-Agent", "IMImobile/Ooredoov2/7.1.0/40/Ooredoo");			
@@ -755,72 +748,47 @@ public class HomePageAPI extends CommonMethods {
 			Response responseETL = request.post();
 			System.out.println("Request Header ==> "+request);
 			String responsebody = responseETL.asString();
-
 			System.out.println(ETLiveTr + " Response ==> " + responsebody);
-
 			//logger.log(LogStatus.PASS, "Request Headers = "+request);
-
-
-
 			logger.log(LogStatus.INFO, "Response = "+responsebody);
-
-
 			Object w = (responseETL.body().jsonPath().get(resppath) != null
 					&& !responseETL.body().jsonPath().get(resppath).equals(""))
 					? responseETL.body().jsonPath().get(resppath)
 							: new ArrayList<Map<String, Object>>();		
-
-
-
-
 					if (w != null) {
 						if (w instanceof String) {
 							apirespETL.add((String) w);
 						}
 						if (w instanceof List) {
 							for (int h = 0; h < ((List<Map<String, Object>>) w).size(); h++) {
-
 								String vasdetails = responseETL.body().jsonPath().get(resppath + "[" + h + "]." + pathext);//
-
 								apirespETL.add(vasdetails);
-
 							}
 						}
 					}
 
 
 		} else {
-
 			request.header("Content-Type", "application/json");
 			// System.out.println("2");
 			request.header("X-IMI-UID", Uid);
 			// System.out.println("3");
 			request.header("X-IMI-OAUTH", LogiSessionid());
 			// System.out.println("4");
-
 			// System.out.println("5");
 			request.header("X-IMI-AUTHKEY", "APPYM8205D04");
 			request.body(ETLiveTranBody(ETLiveTr, TopSendPin));
-
 			// System.out.println("7");
 			request.header("X-IMI-HASH", SessionHashKeyETLiveTrans(ETLiveTranBody(ETLiveTr, TopSendPin)));
-
 			Response responseETL = request.post();
-
 			String responsebody = responseETL.asString();
-
 			System.out.println(ETLiveTr + " Response ==> " + responsebody);
 			logger.log(LogStatus.INFO, "Response = "+responsebody);
-
-
 			Object w = (responseETL.body().jsonPath().get(resppath) != null
 					&& !responseETL.body().jsonPath().get(resppath).equals(""))
 					? responseETL.body().jsonPath().get(resppath)
 							: new ArrayList<Map<String, Object>>();
-
-
 					//List<String> apirespETL = new ArrayList<>();
-
 					if (w != null) {
 						if (w instanceof String) {
 							//apirespETL.clear();
@@ -829,9 +797,7 @@ public class HomePageAPI extends CommonMethods {
 						}
 						if (w instanceof List) {
 							for (int h = 0; h < ((List<Map<String, Object>>) w).size(); h++) {
-
 								String vasdetails = responseETL.body().jsonPath().get(resppath + "[" + h + "]." + pathext);//
-
 								apirespETL.add(vasdetails);
 								System.out.println("List API Result ==> "+apirespETL);
 

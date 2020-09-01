@@ -3,7 +3,7 @@
 <suite name="Suite">  
 <test name="Test">
   	<parameter name="config" value="config.json"/>  	
-  	<parameter name="msisdn" value="9971352019"/>
+  	<parameter name="msisdn" value="9971357267"/>
     <classes>
       <class name="AndroidAppiumAuto.AppActivity"/>
     </classes>
@@ -11,7 +11,7 @@
   <!-- <test name="testSamsung">
   	<parameter name="config" value="configParallel.json"/>
   	<parameter name="environment" value="Samsung"/>
-  	<parameter name="msisdn" value="9971357267"/>
+  	<parameter name="msisdn" value="9971352019"/>
     <classes>
       <class name="AndroidAppiumAuto.AppActivity"/>
     </classes>
