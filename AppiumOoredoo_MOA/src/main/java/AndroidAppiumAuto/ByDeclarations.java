@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -16,8 +18,12 @@ import java.util.Properties;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -37,6 +43,7 @@ import io.appium.java_client.touch.offset.PointOption;
 public class ByDeclarations {	//ExtentTest test;
 	ExtentReports extent;
 	protected ExtentTest logger;
+	WebDriver Webdr;
 	Map<String,String> contextmap =  new HashMap<>();
 	Map<String,Integer> balanceCheck = new HashMap<>();
 	Properties obj = new Properties();
@@ -113,7 +120,9 @@ public class ByDeclarations {	//ExtentTest test;
 
 	public void replacemsisdn(String msisdnxml) throws IOException {
 		propertyelements();
-
+		FileInputStream objfile = new FileInputStream(new File(System.getProperty("user.dir") + "\\ElementProperties.properties"));
+		obj.load(new InputStreamReader(objfile, Charset.forName("UTF-8")));
+		
 		String filePath = System.getProperty("user.dir") + "\\ElementProperties.properties";
 		try {
 			Map<String, String> map = readPropertiesFileAsMap(filePath, "=");		
@@ -124,7 +133,10 @@ public class ByDeclarations {	//ExtentTest test;
 				//System.out.println(map.keySet());
 				//System.out.println(map.get(key));
 				//obj.setProperty(key, map.get(key).replace("(MSIS)", msisdn));
-				obj.setProperty(key, map.get(key).replace("(MSIS)", msisdnxml));
+				if(map.get(key).contains("(MSIS)")) {
+					obj.setProperty(key, map.get(key).replace("(MSIS)", msisdnxml));
+				}
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -168,9 +180,9 @@ public class ByDeclarations {	//ExtentTest test;
 
 	public List<AndroidElement> AppSameList(String element) throws Exception {		
 		propertyelements();			
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		//WebDriverWait wait = new WebDriverWait(driver, 30);
 		String eeelements = obj.getProperty(element);		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(eeelements)));		
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(eeelements)));		
 		List<MobileElement> DisplayCheck = driver.findElements(By.xpath(eeelements));	
 		MobileElement DisplayCh = driver.findElement(By.xpath(eeelements));	
 		List<AndroidElement> listdisplay = new ArrayList<>();	
@@ -194,7 +206,26 @@ public class ByDeclarations {	//ExtentTest test;
 			Double ScrollheightStart = dim.getHeight() * 0.60;
 			int scrollStart = ScrollheightStart.intValue();
 			// scroll till 90% of the page
-			Double ScrollheightEnd = dim.getHeight() * 0.4;
+			Double ScrollheightEnd = dim.getHeight() * 0.35;
+			int scrollEnd = ScrollheightEnd.intValue();
+			int width = dim.getWidth();
+			int x = width / 2;		
+			new TouchAction((AndroidDriver) driver).press(PointOption.point(x, scrollStart))
+			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(200))).moveTo(PointOption.point(x, scrollEnd))
+			.release().perform();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void scrollToRedeem() throws Exception {	
+		try {
+			Dimension dim = driver.manage().window().getSize();
+			// Start from middle of the page
+			Double ScrollheightStart = dim.getHeight() * 0.70;
+			int scrollStart = ScrollheightStart.intValue();
+			// scroll till 90% of the page
+			Double ScrollheightEnd = dim.getHeight() * 0.20;
 			int scrollEnd = ScrollheightEnd.intValue();
 			int width = dim.getWidth();
 			int x = width / 2;		
@@ -213,5 +244,30 @@ public class ByDeclarations {	//ExtentTest test;
 		//System.out.println("scrFile ==>"+scrFile);
 		return scrFile;
 	}	
+	
+	
+	
+	public void safeJavaScriptClick(String elementclickjs) throws Exception {
+		try {
+			//AndroidDriver dr = null ;
+			String PathCheck3 = (String) obj.get(elementclickjs);
+			if ((driver.findElement(By.xpath(PathCheck3)).isDisplayed())) {
+			//if (element.isEnabled() && element.isDisplayed()) {
+				System.out.println("Clicking on element with using java script click");
+
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(By.xpath(PathCheck3)));
+			} else {
+				System.out.println("Unable to click on element");
+			}
+		} catch (StaleElementReferenceException e) {
+			System.out.println("Element is not attached to the page document "+ e.getStackTrace());
+		} catch (NoSuchElementException e) {
+			System.out.println("Element was not found in DOM "+ e.getStackTrace());
+		} catch (Exception e) {
+			System.out.println("Unable to click on element "+ e.getStackTrace());
+		}
+	}
+	
+	
 
 }

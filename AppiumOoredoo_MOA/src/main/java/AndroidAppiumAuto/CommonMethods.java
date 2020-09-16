@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.sql.Array;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -47,11 +49,11 @@ import io.appium.java_client.touch.offset.PointOption;
 public class CommonMethods extends ByDeclarations {
 
 	Map<String, String> offDb = new HashMap<String, String>();
-	WebDriver Webdr;
+
 	protected ToastCapture tc = new ToastCapture();
 	List<String> apioffid = new ArrayList<String>();
 	int[] x = new int[] { 31, 52 };
-	
+
 
 	public void initmethods() {
 
@@ -98,21 +100,18 @@ public class CommonMethods extends ByDeclarations {
 
 		propertyelements();
 		try {
-			
-			String PathCheck3 = obj.getProperty(clickeve);
-			
-			System.out.println(PathCheck3);
-		
+
+			//String PathCheck3 = obj.getProperty(clickeve);
+			String PathCheck3 = (String) obj.get(clickeve);			
+			//System.out.println(PathCheck3);		
 			WebDriverWait wait = new WebDriverWait(driver, 20);
 			try {
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PathCheck3)));
-
 			} catch (Exception ex) {
-				throw new CustomException(2000,
+				throw new CustomException(1000,
 						"The Element " + clickeve + " you are trying to click is failed , Please try again !");
 			}
 			if ((driver.findElement(By.xpath(PathCheck3)).isDisplayed())) {
-
 				driver.findElement(By.xpath(PathCheck3)).click();
 				// System.out.println("click ok == >"+PathCheck3);
 			} else {
@@ -129,13 +128,13 @@ public class CommonMethods extends ByDeclarations {
 		}
 
 	}
-	
+
 	public void SelectEvent(String selectevent) throws CustomException, Exception {
 		propertyelements();
-try {
-			
+		try {
+
 			String SelectCheck = obj.getProperty(selectevent);
-		
+
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			try {
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SelectCheck)));
@@ -144,62 +143,43 @@ try {
 				throw new CustomException(2000,
 						"The Element " + selectevent + " you are trying to Select could not found in given period ! Please try again !");
 			}
-			
-		if(driver.findElement(By.xpath(selectevent)).isEnabled() || driver.findElement(By.xpath(selectevent)).isSelected()) {
-			
-			//driver.findElement(By.xpath(selectevent)).click();
-			System.out.println("Element Already Selected");
-			return;
-		}
+
+			if(driver.findElement(By.xpath(selectevent)).isEnabled() || driver.findElement(By.xpath(selectevent)).isSelected()) {
+
+				//driver.findElement(By.xpath(selectevent)).click();
+				System.out.println("Element Already Selected");
+				logger.log(LogStatus.PASS, "Selected Field/Element is "+driver.findElement(By.xpath(selectevent)).getText());
+				return;
+			}
 		}  catch (CustomException e) {
 			System.out.println("Unable to find " + selectevent + " to Select !" + e);
 
-			logger.log(LogStatus.FAIL, "Exception occured: " + e.getMessage());
+			logger.log(LogStatus.INFO, "Exception occured: " + e.getMessage());
 			throw new CustomException(e.getCode(), e.getMessage());
 
 		}
 	}
 
-	public String AppValidation(String elements) throws IOException, CustomException {
+	public String AppValidation(String elements) throws CustomException  {
 
-		propertyelements();
-		// Thread.sleep(1000);
 		try {
-			String PathCheck2 = obj.getProperty(elements);
-			// System.out.println("PathCheck2 ==>"+PathCheck2);
-			MobileElement DisplayCheck = null;
-			try {
-				DisplayCheck = (MobileElement) driver.findElement(By.xpath(PathCheck2));
-			} catch (Exception ex) {
-				throw new CustomException(500,
-						"The Element " + elements + " could not find from the application please try again !");
-			}
-
+			propertyelements();		
+			String PathCheck2 = obj.getProperty(elements);			
+			MobileElement DisplayCheck = null;			
+			DisplayCheck = (MobileElement) driver.findElement(By.xpath(PathCheck2));
 			if (DisplayCheck.isDisplayed()) {
-
-				// System.out.println(elements+" = " + DisplayCheck.getText());
-
 				String appcheck = DisplayCheck.getText();
-				// System.out.println("appcheck ==>"+appcheck);
-				
 				return appcheck;
-
-			} else {
-				throw new CustomException(500, "Element could not find from the application please try again !");
-			}
-		} catch (CustomException e) {
-			//logger.log(LogStatus.INFO, "Exception occured: " + e.getMessage());
-			throw new CustomException(e.getCode(), e.getMessage());
-			// logger.log(LogStatus.FAIL, "Element could not found ! To String Method = "
-			// +e.toString());
-			// logger.log(LogStatus.FAIL, "Element could not found ! Print Stack Trace = "
-			// +e.printStackTrace());
-
+			} 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		throw new CustomException(300, "The Element " + elements + " could not find from the application please try again !");				
+
 	}
 
 	public String AppValidationInLoop(String elements) throws IOException, CustomException {
-
 		propertyelements();
 		// Thread.sleep(1000);
 		try {
@@ -381,8 +361,8 @@ try {
 			int x = width / 2;
 
 			new TouchAction((AndroidDriver) driver).press(PointOption.point(x, scrollStart))
-					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(200))).moveTo(PointOption.point(x, scrollEnd))
-					.release().perform();
+			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(200))).moveTo(PointOption.point(x, scrollEnd))
+			.release().perform();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -409,19 +389,19 @@ try {
 		}
 	}
 
-	
+
 	public void dbdetails(String dropdwn, String querypk) throws Exception {
-		
-		
+
+
 		//System.out.println("Db Detils page eneterd");
 		propertyelements();
 
 		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
+
 		Webdr.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
 
 		Webdr.get("http://ozonecms.ooredoo.com.mm/getdbdetails/");
-		
+
 		//System.out.println("Db Detils page after url called");
 
 		Webdr.findElement(dbdetails).sendKeys("dbdetails");
@@ -474,7 +454,7 @@ try {
 		}
 		return mpinsheet;
 	}
-	
+
 
 	public String mpinvalue(String TopSendPin, String sheetname) throws IOException, Exception {
 
@@ -491,13 +471,13 @@ try {
 		}
 		return Topsend.get(0);
 	}
-	
+
 
 	public void SendEvent(String SendEvents, String InputSendKey) throws IOException, Exception {
-		
+
 		propertyelements();		
 		String SendPath = obj.getProperty(SendEvents);
-			try {
+		try {
 			if ((driver.findElement(By.xpath(SendPath)).isDisplayed())) {
 
 				driver.findElement(By.xpath(SendPath)).clear();
@@ -515,7 +495,7 @@ try {
 		}
 
 	}
-	
+
 
 	public String otprecive() throws Exception {
 		propertyelements();		
@@ -536,8 +516,8 @@ try {
 		}	
 		return getotp;
 	}
-	
-	
+
+
 	String Exceel_Path;
 	public HSSFWorkbook Exceel() throws Exception {
 		Exceel_Path = obj.getProperty("Exceel_Physical_Path");
@@ -551,8 +531,9 @@ try {
 		FileOutputStream fos = new FileOutputStream(Exceel_Path);
 		workbook.write(fos);
 	}
-	
+
 	public String ksvalue() throws IOException, CustomException {
+		waituntillfound("buypkpopmesg");
 		String mess = AppValidation("buypkpopmesg");		
 		String[] arr = mess.split(" ");
 		int i = 0;
@@ -572,17 +553,18 @@ try {
 		String messKs = finalVal.replaceAll("[^0-9]", "");
 		return messKs;
 	}
-	
-	
+
+
 	public void scrolltill(String ActualApp, String Expected) throws Exception {
 
-		
-		for (int i = 0; i < 5; i++) {
+
+		for (int i = 0; i < 6; i++) {
 			swipeByElements();
-			System.out.println("Search attempts - "+i);
+			//System.out.println("Search attempts - "+i);
 			try {
 				if (AppValidation(ActualApp).equalsIgnoreCase(Expected)) {
-					System.out.println(Expected +" found in " + i + " scroll");					
+					System.out.println(Expected +" found in " + i + " scroll");		
+
 					break;
 				}  else {
 					System.out.println("No Such Details available");
@@ -594,22 +576,22 @@ try {
 		}
 
 	}
-	
-	
+
+
 	public void swipeBycoordinates(int xaxis, int yaxis, int endxaxis,int numoftimes) {
-		
+
 		for(int map=1; map<=numoftimes;map++) {
-		int anchor = (int) (xaxis); // x-axis
-		int startPoint = (int) (yaxis); // y-axis
-		int endPoint = (int) (endxaxis); // x-axis end		
-		TouchAction tou = new TouchAction((AndroidDriver) driver);		
+			int anchor = (int) (xaxis); // x-axis
+			int startPoint = (int) (yaxis); // y-axis
+			int endPoint = (int) (endxaxis); // x-axis end		
+			TouchAction tou = new TouchAction((AndroidDriver) driver);		
 			tou.press(PointOption.point(anchor, startPoint))
-					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
-					.moveTo(PointOption.point(endPoint, startPoint)).release().perform(); 
+			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
+			.moveTo(PointOption.point(endPoint, startPoint)).release().perform(); 
 		}	
 	}
-	
-	
+
+
 	public void updatelocation() throws Exception {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		//ClickEvents("closeicon");
@@ -620,6 +602,7 @@ try {
 		ClickEvents("SetLocation");
 		Thread.sleep(2000);
 		getResult1("pass");	
+		String OldLocationAddress = AppValidation("OldLocation");
 		ClickEvents("ChangeYourLocationbutton");
 		Thread.sleep(2000);
 		getResult1("pass");			
@@ -633,26 +616,60 @@ try {
 		System.out.println(mesesage);
 		Thread.sleep(2000);
 		if(mesesage.equalsIgnoreCase("Your new home location successfully updated")) 
-			{			
-			logger.log(LogStatus.INFO, "Success Message ="+mesesage);
-			}			
+		{			
+			logger.log(LogStatus.INFO, mesesage);
+		}			
 		ClickEvents("confirmbutton");
-		Thread.sleep(1000);			
+		Thread.sleep(1000);	
+		
+		String Updatedlocation = AppValidation("OldLocation");
+		if(Updatedlocation.equalsIgnoreCase(OldLocationAddress)) {
+			logger.log(LogStatus.FAIL, "Location Not Updted");
+		} else  {
+			logger.log(LogStatus.PASS, "Old Location Address : "+OldLocationAddress);
+			logger.log(LogStatus.PASS, "New Location Address : "+Updatedlocation);
+		}
+		
+		
+		
+		 // 8.1
+		
+		/*String LocationAddress = AppValidation("OldLocation");
+		String Name = AppValidation("Setting_Name");
+		ClickEvents("uploadprofilepic");
+		if(!AppValidation("VIPAddressHeader").isEmpty()) {
+			logger.log(LogStatus.PASS, "Redirected to Profile Update Page");
+			getResult1("pass");
+			String updatedlocation = AppValidation("VIPUpdateAddress");
+			String namefield = AppValidation("VIPEnterName");
+			if(updatedlocation.equals(LocationAddress) && Name.equals(namefield)) {
+				logger.log(LogStatus.PASS, "Updated Location is = "+updatedlocation );
+				logger.log(LogStatus.PASS, "Name Field are same = "+Name );
+			} else {
+				logger.log(LogStatus.FAIL, "Location  & Name MisMatched ");
+			}
+		} else {
+			logger.log(LogStatus.FAIL, "Redirection to Profile Page is Failed");
+		}
+
+		ClickEvents("homebtton");*/
+
 	}
-	
-	
+
+
 	public String imagedimesions(String dim) {					
 		String dimen = driver.findElement(By.xpath(obj.getProperty(dim))).getSize().toString();	
 		if(dimen.isEmpty()) {
 			logger.log(LogStatus.FAIL, "No Image/Banner/Icon is available");
 		} else {
-			logger.log(LogStatus.PASS, "Dimensions of Image/Banner/Icon = "+dimen);
+			logger.log(LogStatus.PASS, "Dimensions of Image/Banner/Icon for "+dim+" = "+dimen);
+			//logger.log(LogStatus.PASS, "Number of Available Images/Icon/Banner for "+dim+" = "+dimen.length());
 		}
-		
+
 		return dimen;		
 	}	
-	
-	
+
+
 	public void vipnewhomepages() throws Exception {
 		HSSFWorkbook contextbook = Exceel();
 		HSSFSheet contextsheet = contextbook.getSheet("VIPJounrey");		
@@ -660,7 +677,7 @@ try {
 			String contextType = contextsheet.getRow(context).getCell(0).getStringCellValue();
 			String ContextContent = contextsheet.getRow(context).getCell(1).getStringCellValue();
 			contextmap.put(contextType, ContextContent);
-			}
+		}
 		Thread.sleep(2000);
 		if(!driver.findElements(By.xpath(obj.getProperty("HOME_USER_POINTS"))).isEmpty()) {
 			//if(!AppValidation("HOME_USER_POINTS").isEmpty()) {
@@ -673,7 +690,7 @@ try {
 			getResult1("pass");
 			//ClickEvents("HOME_USER_POINTS");	
 			vipclickupdate();
-			
+
 		} else  {
 			logger.log(LogStatus.PASS, "New User Please = "+AppValidation("VIPNewUser"));
 			getResult1("pass");
@@ -718,82 +735,119 @@ try {
 		for(int vip = 1; vip<=5;vip++)
 			logger.log(LogStatus.PASS, "User Levels in VIP Page = "+AppValidation("vipLevels"+vip));
 	}
-	
-	
+
+
 	public void spinwheel() throws Exception, InterruptedException, CustomException {
-		//ClickEvents("HOME_USER_LEVEL");		
+		//vipclickupdate();
 		swipeByElements();
-		getResult1("pass");
-		String toastmesg = tc.ToastMessage(TakeScreenshot(),"Spin");
-		System.out.println("toastmesg == > "+toastmesg);
-		if(toastmesg.equals("True")) {
-			ClickEvents("contentpopimages");
-			Thread.sleep(7000);
-		} else {
-			System.out.println("No spin the wheel");
-		}	
-		getResult1("pass");
-		if(!driver.findElements(By.xpath(obj.getProperty("buypkpopmesg"))).isEmpty()) {			
-			String lesspoints = AppValidation("buypkpopmesg");
-			if(!lesspoints.equalsIgnoreCase("Sorry customer! You need sufficient amount of VIP points to play the Game!"))
+		//getResult1("pass");
+		//for(int spinposneg = 0; spinposneg<2; spinposneg++ ) {
+			String toastmesg = tc.ToastMessage(TakeScreenshot(),"Spin");
+			System.out.println("toastmesg == > "+toastmesg);
+			if(toastmesg.equals("True")) {
+				ClickEvents("contentpopimages");
+				Thread.sleep(3000);
+			} else {
+				System.out.println("No spin the wheel");
+			}	
+			Thread.sleep(5000);
+			//System.out.println(driver.getPageSource());
+			if(driver.findElements(By.xpath(obj.getProperty("buypkpopmesg"))).size()!=0) {	
+				getResult1("pass");
+				String lesspoints = AppValidation("buypkpopmesg");
+				System.out.println(lesspoints);
+				if(lesspoints.trim().equalsIgnoreCase("Sorry customer! You need sufficient amount of VIP points to play the Game!"))
 				{
 					logger.log(LogStatus.INFO, lesspoints);
 					ClickEvents("Ok_button");
 					return;
 				}
-		}	
-		else if(!driver.findElements(By.xpath(obj.getProperty("Redeemspin"))).isEmpty()) {
-			String RedeemWelcomeback = AppValidation("Redeemspin");
-			logger.log(LogStatus.INFO, RedeemWelcomeback);			
-		}
-		else if(!driver.findElements(By.xpath(obj.getProperty("Redeemmwith50"))).isEmpty()) {
-			String Redeemmwith50 = AppValidation("Redeemmwith50");
-			logger.log(LogStatus.INFO, Redeemmwith50);
-		}
-		Thread.sleep(5000);
-		ClickEvents("Redeemproceed");
-		getResult1("pass");
-		ClickEvents("KnowTheSpins");
-		//UiSelectorClick("Know Your Spins >");
-		Thread.sleep(2000);		
-		getResult1("pass");
-		swipeByElements();
-		logger.log(LogStatus.INFO, "Before Spin Wheel");
-		ClickEvents("playnow");
-		Thread.sleep(1000);
-		getResult1("pass");
-		ClickEvents("SpinButton");
-		logger.log(LogStatus.INFO, "During Spin Wheel");
-		getResult1("pass");
-		Thread.sleep(10000);
-		getResult1("pass");
-		ClickEvents("okspin");
+			}	
+			else if(driver.findElements(By.xpath(obj.getProperty("Redeemmwith50"))).size()!=0) {
+				//getResult1("pass");
+				String Redeemmwith50 = AppValidation("Redeemmwith50");			
+				if(Redeemmwith50.trim().equalsIgnoreCase("You will be charged 50 points from the points balance to play the game.")) {
+					logger.log(LogStatus.INFO, "New Spin User :"+Redeemmwith50);
+					System.out.println(Redeemmwith50);
+				} else {
+					System.out.println(Redeemmwith50);
+					logger.log(LogStatus.INFO, "Welcome Back and Play spin Now :"+Redeemmwith50);	
+				}			
+			}
+			Thread.sleep(5000);
+			ClickEvents("Redeemproceed");
+			getResult1("pass");
+			//ClickEvents("KnowTheSpins");
+			//UiSelectorClick("Know Your Spins >");
+			//Thread.sleep(2000);		
+			//getResult1("pass");
+			//swipeByElements();
+			logger.log(LogStatus.INFO, "Before Spin Wheel");
+
+			//System.out.println("STW Code :"+driver.getPageSource());
+			//ClickEvents("playnow");
+			//Thread.sleep(1000);
+			//getResult1("pass");
+
+			//logger.log(LogStatus.INFO, "During Spin Wheel");
+			//String countspin = driver.findElement(By.xpath(obj.getProperty("SpinCount"))).getText();				
+			String noofspins =  driver.findElement(By.xpath(obj.getProperty("SpinCount"))).getText();
+			int nospi = Integer.parseInt(noofspins);
+			System.out.println(nospi);
+			logger.log(LogStatus.INFO, "No of Available Before Spins : "+Integer.parseInt(noofspins));
+			//System.out.println(Integer.valueOf(noofspins));
+			for(int spcount=0; spcount < nospi;spcount++) {	
+				System.out.println("Count in for loop - "+spcount);
+				ClickEvents("SpinButton");
+				logger.log(LogStatus.INFO, "No of Available Spins : "+driver.findElement(By.xpath(obj.getProperty("SpinCount"))).getText());
+				Thread.sleep(10000);
+				getResult1("pass");
+				Thread.sleep(2000);
+				if(!driver.findElements(By.xpath(obj.getProperty("Redeemnow"))).isEmpty()) { 
+					//ClickEvents("okspin");
+					System.out.println("Redeem now is available");
+				} else {
+
+					//System.out.println("efore ok - "+spcount);
+					getResult1("pass");
+					logger.log(LogStatus.PASS, "Offer redeemed");
+					ClickEvents("okspin");
+					//System.out.println("after ok - "+spcount);
+				}
+
+				//System.out.println("out of if else ok - ");
+			}
+			//System.out.println("out of if else ok - and for ");
+			//Thread.sleep(2000);	
+			//System.out.println("After spins all :"+driver.getPageSource());
+			//driver.navigate().back();
+		//}
 	}
-	
-public void Swipe(int numoftimes, String xycord, int endpoint) {
-	
-	//if(!driver.findElements(By.xpath(obj.getProperty("Entertmntbanners"))).isEmpty()) {
-	MobileElement bann = driver.findElement(By.xpath(obj.getProperty(xycord)));
-	
-	System.out.println("Dimensions of earnmore = "+bann);
-	
-	int xax = bann.getCenter().getX();
-	int yax = bann.getCenter().getY();
-	//int yax = bann.height / 2;
-	
+
+	public void Swipe(int numoftimes, String xycord, int endpoint) {
+
+		//if(!driver.findElements(By.xpath(obj.getProperty("Entertmntbanners"))).isEmpty()) {
+		MobileElement bann = driver.findElement(By.xpath(obj.getProperty(xycord)));
+
+		System.out.println("Dimensions of earnmore = "+bann);
+
+		int xax = bann.getCenter().getX();
+		int yax = bann.getCenter().getY();
+		//int yax = bann.height / 2;
+
 		System.out.println("X = "+xax);
 		System.out.println("Y = "+yax);
 		for(int map=1; map<=numoftimes;map++) {
-		int anchor = (int) (xax); // x-axis
-		int startPoint = (int) (yax); // y-axis
-		int endPoint = (int) (endpoint); // x-axis end
-		TouchAction tou = new TouchAction((AndroidDriver) driver);		
+			int anchor = (int) (xax); // x-axis
+			int startPoint = (int) (yax); // y-axis
+			int endPoint = (int) (endpoint); // x-axis end
+			TouchAction tou = new TouchAction((AndroidDriver) driver);		
 			tou.press(PointOption.point(anchor, startPoint))
-					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
-					.moveTo(PointOption.point(endPoint, startPoint)).release().perform(); 
+			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
+			.moveTo(PointOption.point(endPoint, startPoint)).release().perform(); 
 		}	
 	}
-	
+
 	public void EarnMorePoints() {
 		try {
 			//ClickEvents("AddOption");
@@ -807,32 +861,26 @@ public void Swipe(int numoftimes, String xycord, int endpoint) {
 			e.printStackTrace();
 		}
 	}
-	
-	public void vipclickupdate() throws Exception {
-		try {
+
+	public void vipclickupdate() throws Exception {		
 			ClickEvents("HOME_USER_POINTS");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (CustomException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Thread.sleep(1000);
-		if(!driver.findElements(By.xpath(obj.getProperty("UpdateLater"))).isEmpty()) {
+			Thread.sleep(2000);
+			//if(!driver.findElements(By.xpath(obj.getProperty("UpdateLater"))).isEmpty()) {
 			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
+				
+				if(driver.findElements(By.xpath(obj.getProperty("UpdateLater"))).size() != 0) {
+					ClickEvents("UpdateLater");
+				} else  {
+					System.out.println("No Update later");
+				}
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			ClickEvents("UpdateLater");
-		}
+				e.getLocalizedMessage();
+			}				
 	}
-	
+
+
+
 	public void iselected() {
 		MobileElement selected = driver.findElement(By.className("android.widget.TextView"));
 		if(selected.isSelected()) {
@@ -840,65 +888,196 @@ public void Swipe(int numoftimes, String xycord, int endpoint) {
 			logger.log(LogStatus.PASS, "Selected offer is =  " + selected.getText());
 		}
 	}
-	
+
 	public void RedeemPoints() throws Exception {
 		Map<String,String> vipoffer =  new LinkedHashMap<>();
-		//vipclickupdate();
-		ScrollUp();
+		//vipclickupdate();		
+		//ScrollUp();
 		List<AndroidElement> shortlist = AppSameList("shortcutTitles");
 		for(int m =0; m<1; m++) {
 			logger.log(LogStatus.PASS, "Clicked on "+shortlist.get(m).getText());
-			shortlist.get(m).click();	
+			shortlist.get(m).click();	// Redeem text click
 		}			
-		List<AndroidElement> keykey = AppSameList("VIPOffersTitile");		
+		List<AndroidElement> keykey = AppSameList("VIPOffersTitile");	// Redeem offers titiels	
 		keykey.remove(0);
 		Thread.sleep(2000);
 		//System.out.println("keykey = "+keykey.ge);
 		List<AndroidElement> valuesvalues = AppSameList("ViewAll");
 		System.out.println("keykey.size() = "+keykey.size());
 		for(int view=0; view<keykey.size(); view++) {	
-			vipoffer.put(keykey.get(view).getText(), valuesvalues.get(view).getText());			
+			vipoffer.put(keykey.get(view).getText(), valuesvalues.get(view).getText());		// data=viewall // voice-viewall // spec-viewall	
 		}
 		//System.out.println("one =  "+vipoffer);
 		//System.out.println("Two = "+vipoffer.keySet().toString());
+		// 8.1
+				//waituntillfound("Ok_button");
+				/*if(!driver.findElements(By.xpath(obj.getProperty("Ok_button"))).isEmpty()) {
+					String noofferfound = AppValidation("success_or_failure_pop_up_msg");
+					getResult1("pass");
+					logger.log(LogStatus.PASS, noofferfound);
+					ClickEvents("Ok_button");
+				} */
+		// To click all data/voice/speci off view all and take screenshot
+		try {
+		for(int entersearch=0; entersearch<3;entersearch++ ) {			
+		ClickEvents("SearchTxt");
+		if(entersearch==0) {
+		SendEvent("EnterSearchTxt", "Test Search");			
+		//
+		} else if(entersearch==1) {
+			SendEvent("EnterSearchTxt", "MB");	
+			
+		} else if (entersearch ==2) {
+			SendEvent("EnterSearchTxt", "momo");
+			
+		}
+		ClickEvents("EnterSearch");	
+		Thread.sleep(2000);
+		getResult1("pass");			
+		int numberoftitles = driver.findElements(By.xpath(obj.getProperty("DataVoiceValidity"))).size();	
 		
-		for(int m=0 ; m<2; m++) {
-			logger.log(LogStatus.PASS, "Offer selected is " +keykey.get(m).getText());
-			valuesvalues.get(m).click();				
-				Thread.sleep(2000);
-				getResult1("pass");
-				String packdetails = AppValidation("PackDetails");
-				String PackPoints = AppValidation("PackPoints").replaceAll("[^0-9]", "");				
-				ClickEvents("DataVoiceSpeical");
-				Thread.sleep(3000);
-				getResult1("pass");
-				String DataOffers;
-				try {
-					DataOffers = "You are trying to redeem '"+packdetails+" Offer' with "+PackPoints+" VIP points.";
-					if(!UiSelectorText(DataOffers).isEmpty()) {
-						logger.log(LogStatus.PASS, "Selected offer is =  " +UiSelectorText(DataOffers));
-						UiSelectorClick("CONFIRM");						
-								}					
-				} catch (Exception e) {					
-						String voiceOffers = "You are trying to redeem '"+packdetails+" Call' with "+PackPoints+" VIP points.";
-						String callonnet = UiSelectorText(voiceOffers);
-						logger.log(LogStatus.PASS, "Selected offer is =  " +callonnet);
-						//System.out.println(callonnet);
-						UiSelectorClick("CONFIRM");	
-					}				
-				Thread.sleep(1000);
-				getResult1("pass");
-				UiSelectorClick("OK");
-				driver.navigate().back();
-				Thread.sleep(2000);
-				getResult1("pass");					
+		if(numberoftitles!=0) {
+			for(int titles = 0; titles<numberoftitles; titles++) {										
+					logger.log(LogStatus.PASS, "Available offers & Points are: "+AppSameList("SearchTitles").get(titles).getText() + " Points :"+AppSameList("DataVoiceValidity").get(titles).getText());									
+					}
 		}		
-		ScrollUp();
-		ScrollUp();		
+		else {			
+			System.out.println("No offer found");
+			logger.log(LogStatus.PASS, "Offers found");
+		}
+		ClickEvents("Backarrow");
 	}
-	
-	public void MyDiscounts() throws Exception {
 		
+		Thread.sleep(2000);
+			for(int m=0 ; m<3; m++) {
+
+				logger.log(LogStatus.PASS, "Offer selected is " +keykey.get(m).getText());				
+				//System.out.println("Looping before = "+m);
+				Thread.sleep(2000);
+				valuesvalues.get(m).click();	// data's - viewall click // voice- viewall click // sploffer - viewall click	
+				//System.out.println("Looping After = "+m);
+				//getResult1("pass");
+				Thread.sleep(1000);
+				
+				scrolltill("FAQ", "FAQ");
+
+				// Spciloffers - related
+				if(driver.findElements(By.xpath(obj.getProperty("Entertainment"))).size()!=0) {
+					String[] ar = {"Food and Beverage","Entertainment","Electronics","Beauty","Cafe","Fashion","Fitness","Retail"};
+
+					for(int arr=0; arr<ar.length; arr++) {
+						String xpathofdiscounts = "//android.widget.TextView[@text = '"+ar[arr]+"']";
+						if(!driver.findElements(By.xpath(xpathofdiscounts)).isEmpty()) {					
+							driver.findElement(By.xpath(xpathofdiscounts)).click();						
+							Thread.sleep(1000);
+							logger.log(LogStatus.PASS, "Special Offer selected is "+ar[arr]);
+							getResult1("pass");
+							int numberofoffers = driver.findElements(By.xpath(obj.getProperty("Specialofferpoints"))).size();
+
+							for(int offers=0; offers<numberofoffers; offers++) {
+								if(driver.findElements(By.xpath(obj.getProperty("Specialofferpoints"))).size()!=0) {								
+									logger.log(LogStatus.PASS, "Available offers & Points are: "+AppSameList("SpecialofferTitiles").get(offers).getText() + " Points :"+AppSameList("Specialofferpoints").get(offers).getText());									
+								} else {
+									logger.log(LogStatus.INFO, "No Offers are available for "+ar[arr]);
+								}
+							}							
+						}
+					}					
+					Thread.sleep(2000);
+					//getResult1("pass");
+					driver.navigate().back();
+					
+				} else { // Data Voice - related
+					System.out.println("Data voice related");
+					int numberofoffers = driver.findElements(By.xpath(obj.getProperty("Specialofferpoints"))).size();
+					List<AndroidElement> redeemoffers = AppSameList("SpecialofferTitiles");
+					List<AndroidElement> redeemofferspoints = AppSameList("Specialofferpoints");
+					for(int dataoff=0; dataoff<numberofoffers; dataoff++) {								
+						if(!driver.findElements(By.xpath(obj.getProperty("Specialofferpoints"))).isEmpty()) {							
+							logger.log(LogStatus.PASS, "Available offers & Points are: "+redeemoffers.get(dataoff).getText() + " Points :"+redeemofferspoints.get(dataoff).getText());									
+						} else {
+							logger.log(LogStatus.INFO, "No Offers are available");
+						}
+					}
+					ClickEvents("PackDetails");
+					Thread.sleep(5000);					
+					getResult1("pass");
+					UiSelectorClick("CONFIRM");	
+					//System.out.println("debug 1 ="+redeemoffers.get(0).getText());
+					/*String packdetails = redeemoffers.get(0).getText().toString();
+					String PackPoints = redeemofferspoints.get(0).getText().toString().replaceAll("[^0-9]", "");
+					
+						System.out.println("packdetails = "+packdetails);
+						System.out.println("PackPoints = "+PackPoints);	
+						
+						try {
+
+							String DataOffers = "You are trying to redeem '"+packdetails+" Offer' with "+PackPoints+" VIP points.";
+							if(!UiSelectorText(DataOffers).isEmpty()) {
+								logger.log(LogStatus.PASS, "Selected offer is =  " +UiSelectorText(DataOffers));
+								UiSelectorClick("CONFIRM");	
+								
+										}	
+							//else if ()
+						} catch (Exception e) {					
+								String voiceOffers = "You are trying to redeem '"+packdetails+" Call' with "+PackPoints+" VIP points.";
+								String callonnet = UiSelectorText(voiceOffers);
+								logger.log(LogStatus.PASS, "Selected offer is =  " +callonnet);
+								//System.out.println(callonnet);
+								UiSelectorClick("CONFIRM");	
+							}	*/		
+						Thread.sleep(1000);
+						getResult1("pass");
+						UiSelectorClick("OK");					
+						Thread.sleep(2000);
+						getResult1("pass");
+						driver.navigate().back();
+						//break;
+							}
+					}	
+				//}
+			//}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.getLocalizedMessage();
+		}
+		ScrollUp();
+		ScrollUp();	
+		
+		//ScrollUp();
+		//ScrollUp();
+		
+		/*String noenoughpoints = "You don't have enough points to redeem this offer.";					
+		if(driver.findElements(By.xpath(obj.getProperty("Earnpointsbutton"))).size()!=0) {
+			System.out.println("8.1");
+			getResult1("pass");
+			logger.log(LogStatus.PASS, noenoughpoints);
+			ClickEvents("Earnpointsbutton");
+			if(AppValidation("EarnmorepointTitles").equalsIgnoreCase("Earn More Points")) {
+				logger.log(LogStatus.PASS, "Redirected to Earn More Points");
+				getResult1("pass");
+				ScrollUp();																		
+				shortlist.get(0).click();
+			}
+
+		} else {*/
+
+		// 8.1
+
+		//String DataVoiceValidity = AppValidation("DataVoiceValidity");  //data/voice First offer validity
+		/*int validitycount = driver.findElements(By.xpath("DataVoiceValidity")).size();
+		for(int datavoicevalid=0;datavoicevalid<validitycount;datavoicevalid++ ) {
+			if(!driver.findElements(By.xpath(obj.getProperty("DataVoiceValidity"))).isEmpty()) {
+				logger.log(LogStatus.PASS, "Available offers & Validity are: "+AppSameList("DataVoiceTItlename") + " Validity :"+AppSameList("DataVoiceValidity"));
+			} else {
+				logger.log(LogStatus.INFO, "No Offers are available");
+			}
+		}*/
+
+	}
+
+	public void MyDiscounts() throws Exception {
+
 		List<AndroidElement> shortlist = AppSameList("shortcutTitles");
 		for(int m =1; m<2; m++) {
 			logger.log(LogStatus.PASS, "Clicked on "+shortlist.get(m).getText());
@@ -913,26 +1092,28 @@ public void Swipe(int numoftimes, String xycord, int endpoint) {
 			ClickEvents("UpdateLater");
 			logger.log(LogStatus.PASS, "Category Update Later >");			
 		}
-			Thread.sleep(1000);
-			getResult1("pass");
-			swipeByElements();
-			String[] ar = {"FOOD AND BEVERAGE","ENTERTAINMENT","ELECTRONICS","BEAUTY","CAFE","FASHION","FITNESS","RETAIL"};
-			
-			for(int arr=0; arr<ar.length; arr++) {
+		Thread.sleep(1000);
+		getResult1("pass");
+		swipeByElements();
+		String[] ar = {"FOOD AND BEVERAGE","ENTERTAINMENT","ELECTRONICS","BEAUTY","CAFE","FASHION","FITNESS","RETAIL"};
+
+		for(int arr=0; arr<ar.length; arr++) {
 			String xpathofdiscounts = "//android.widget.TextView[@text = '"+ar[arr]+"']";
 			if(!driver.findElements(By.xpath(xpathofdiscounts)).isEmpty()) {					
 				driver.findElement(By.xpath(xpathofdiscounts)).click();
 				Thread.sleep(1000);
 				logger.log(LogStatus.PASS, "My discounts selected is "+ar[arr]);
 				getResult1("pass");
-				}
 			}
-			driver.navigate().back();
-			ScrollUp();
-			ScrollUp();
 		}
-	
+		driver.navigate().back();
+		ScrollUp();
+		ScrollUp();
+	}
+
 	public void MyPoints() throws Exception {
+		//vipclickupdate();
+		Thread.sleep(2000);
 		List<AndroidElement> shortlist = AppSameList("shortcutTitles");
 		for(int m =2; m<3; m++) {
 			logger.log(LogStatus.PASS, "Clicked on "+shortlist.get(m).getText());
@@ -941,69 +1122,403 @@ public void Swipe(int numoftimes, String xycord, int endpoint) {
 		Thread.sleep(500);
 		getResult1("pass");
 		//String pointshs = AppValidation("pointshistory");
-		if(!driver.findElements(By.xpath(obj.getProperty("pointshistory"))).isEmpty()) {			
+		if(!driver.findElements(By.xpath(obj.getProperty("RedeemLayout"))).isEmpty()) {			
 			logger.log(LogStatus.PASS, "Current Tier Icon exists and its dimensions are "+imagedimesions("CurrentLevelTierIcon") );
 			logger.log(LogStatus.PASS, "Available Points are  "+AppValidation("AvailablePoints") + " " +AppValidation("AvailableText"));
 			logger.log(LogStatus.PASS, "Points History Redirection Text "+AppValidation("PointHistoryRedirection"));
 			ClickEvents("PointHistoryRedirection");
-			logger.log(LogStatus.PASS, "Redirected to Points History Page ");
-			Thread.sleep(2000);
+			Thread.sleep(4000);
+			if(AppValidation("PointsHistory").equals("Points History")) {
+				logger.log(LogStatus.PASS, "Redirected to History Points Page ");
+				getResult1("pass");
+			} else {
+				logger.log(LogStatus.FAIL, "Redirection Failed");
+			}			
+			
+			ClickEvents("ALL");
+			mypointshistory();
+			getResult1("pass");
+			ClickEvents("REDEEM_POINTS");
+			mypointshistory();
+			getResult1("pass");
+			ClickEvents("POINTS_EARNED");
+			mypointshistory();
 			getResult1("pass");
 			driver.navigate().back();						
 		}
-		
+
 		if(!driver.findElements(By.xpath(obj.getProperty("pointshistory"))).isEmpty()) {			
 			logger.log(LogStatus.PASS, ""+AppValidation("PointsCount") + " " +AppValidation("PointsExpireBy")+ " " +AppValidation("PointsExpireByValue"));
+			//logger.log(LogStatus.PASS, ""+AppValidation("PointsCount") );//" " +AppValidation("EarnedQuarter"));
 			logger.log(LogStatus.PASS, "Redeem Points Redirection Text "+AppValidation("RedeemPointsRedirection"));
 			ClickEvents("RedeemPointsRedirection");
-			logger.log(LogStatus.PASS, "Redirected to Redeem Points Page ");
-			Thread.sleep(2000);
-			getResult1("pass");
-			driver.navigate().back();						
+			Thread.sleep(4000);
+			if(AppValidation("RedeemPoints").equals("Redeem Points")) {
+				logger.log(LogStatus.PASS, "Redirected to Redeem Points Page");
+				getResult1("pass");
+			} else {
+				logger.log(LogStatus.FAIL, "Redirection Failed");
+			}		
+							
+			driver.navigate().back();	
 		}
-		
+
+
 		if(!driver.findElements(By.xpath(obj.getProperty("EarnPointsLayout"))).isEmpty()) {			
 			logger.log(LogStatus.PASS, "Next Level Tier Icon exists and its dimensions are "+imagedimesions("NextLevelTierIcon") );
 			logger.log(LogStatus.PASS, "Available Points are  "+AppValidation("NextLevelPoints") + " " +AppValidation("RequiredLevelText"));
 			logger.log(LogStatus.PASS, "Next Level Redirection Text "+AppValidation("EarnPointsRedirection"));
 			ClickEvents("EarnPointsRedirection");
-			logger.log(LogStatus.PASS, "Redirected to Next Level Page ");
-			Thread.sleep(2000);
-			getResult1("pass");
+			Thread.sleep(4000);
+			if(AppValidation("MyBenefits").equals("My Benefits")) {
+				logger.log(LogStatus.PASS, "Redirected to Next Level Page ");
+				getResult1("pass");
+			} else  {
+				logger.log(LogStatus.FAIL, "Redirection Failed");
+			}			
 			driver.navigate().back();						
-		}
-		
-		
+		}		
 	}
-	
+
+	public void mypointshistory() {
+		List<AndroidElement> Alltitles;
+		try {
+			if(!driver.findElements(By.xpath(obj.getProperty("AllTitles"))).isEmpty()){
+			Alltitles = AppSameList("AllTitles");
+			List<AndroidElement> AllDates = AppSameList("AllDates");
+			List<AndroidElement> AllPoints = AppSameList("AllPoints");
+			System.out.println(Alltitles.size());
+			for(int points=0;points<Alltitles.size();points++) {
+				String Titles =  Alltitles.get(points).getText();
+				String Dates =  AllDates.get(points).getText();
+				String Points =  AllPoints.get(points).getText();
+				logger.log(LogStatus.PASS, Titles +" "+ Dates + " "+ Points);
+				}
+			} else {
+				logger.log(LogStatus.PASS, "No Records Found");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 	public void MyBenefits() throws Exception {
 		vipclickupdate();
 		scrolltill("knowmore>", "Know more >");
+		List<AndroidElement> shortlist = AppSameList("shortcutTitles");
+		//shortlist.get(3).click();
 		imagedimesions("MyBenefitsIcon");
-		String colorofelement = driver.findElement(By.xpath(obj.getProperty("MyBenefitsIcon"))).getCssValue("style");
-		System.out.println("colorofelement = "+colorofelement);
-		String desc = AppValidation("MyDiscountDesc");
-		if(desc.isEmpty()) {
-			logger.log(LogStatus.FAIL, "Description is not available");
-		} else {
-			logger.log(LogStatus.PASS, "My Benefits Description : "+desc);
+		getResult1("pass");
+		try {
+			System.out.println(driver.findElement(By.xpath("//android.widget.LinearLayout[@focusable='true']")).getText());			
+			//System.out.println(driver.findElement(By.xpath(obj.getProperty("MyBenefitsIcon"))).getCssValue("color"));
+			//System.out.println("colorofelement = "+colorofelement);
+			String desc = AppValidation("MyBenefitsDesc");
+			if(driver.findElement(By.xpath(obj.getProperty("MyBenefitSelected"))).isSelected()) {
+				driver.findElement(By.xpath(obj.getProperty("MyBenefitSelected"))).getText();
+			}			
+			if(desc.isEmpty()) {
+				logger.log(LogStatus.FAIL, "Description is not available");
+			} else {
+				logger.log(LogStatus.PASS, "My Benefits Description : "+desc);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}		
-		
+
 		ClickEvents("knowmore>");
+		Thread.sleep(2000);		
+		for(int viplevels=1; viplevels<3; viplevels++) {		
+			checkexists("MyBenefitsheadertitle");
+			checkexists("MyBenefitsLooking");		
+			imagedimesions("MyBenefitsVipIcon");			
+			imagedimesions("MyBenefitsImgIcons");		
+			checkexists("MyBenefitsIconName");
+			checkexists("MyBenefitsEarnPoints");
+			checkexists("MySpecialBenefitHeading");
+			checkexists("MySpecialBenefitsoffers");
+			checkexists("MySpecialBenefitsvalues");		
+			checkexists("MyBenefitsAmount");					
+			checkexists("MyBenefitsVipName");			
+			checkexists("MyBenefitsVipPoints");
+			checkexists("MyBenefitsNextLevelPoints");
+			checkexists("MyBenefitsEarnedPoints");
+			checkexists("MyBenefitsLevelIndicator");
+			//swipeByElements();
+			if(!driver.findElements(By.xpath(obj.getProperty("MyBenefitsEarnPoints"))).isEmpty()) {
+				ClickEvents("MyBenefitsEarnPoints");				
+			}			
+			ScrollUp();			
+			Swipe(viplevels, "MyBenefitsAmount",1);
+			Thread.sleep(2000);
+			getResult1("pass");			
+		}
+		int iconscountsmy = AppSameList("MyBenefitspacksupdate").size();
+	//	List<AndroidElement> myicons = AppSameList("MyBenefitspacksupdate");
+
+		System.out.println(iconscountsmy);
+		for(int myben=1; myben<=iconscountsmy; myben++) {
+
+			driver.findElement(By.xpath("//android.widget.LinearLayout[contains(@resource-id,'com.ooredoo.selfcare:id/llBuyPacks')]["+myben+"]")).click();
+			//ClickEvents("MyBenefitsImgIcons");
+			//System.out.println(myicons.get(myben).getText());
+			System.out.println(myben);
+			Thread.sleep(2000);
+			try {
+				if(!driver.findElements(By.xpath(obj.getProperty("VIPDobhead"))).isEmpty()) {
+					//if(myicons.get(myben).getText().equals("Update Profile")) {
+					System.out.println("Update");
+					//myicons.get(myben).click();
+					waituntillfound("UpdatePopup");
+					logger.log(LogStatus.PASS, "Redirected to Profile Update Page");
+					getResult1("pass");
+					//driver.navigate().back();
+					//} else if (myicons.get(myben).getText().equals("Buy Packs")) {
+				} else {
+					//myicons.get(myben).click();
+					System.out.println("bp");
+					logger.log(LogStatus.PASS, "Redirected to Buy Packs Page");
+					waituntillfound("bpinternet");
+					getResult1("pass");				
+					//ClickEvents("AddOption");
+					//ClickEvents("VIPQuick");	
+				}
+				//myicons.get(myben).click();
+				ClickEvents("homebtton");
+				vipclickupdate();
+				waituntillfound("VipMainIcon");
+				ClickEvents("VipMainIcon");	
+				waituntillfound("MyBenefitsImgIcons");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.getMessage();
+			}
+
+		}	
 	}
-	
-	
-	
+
+	public void waituntillfound(String waittill) {
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath(obj.getProperty(waittill))));
+	}
+
+
+	public void checkexists(String exisitnot) {
+		if(!driver.findElements(By.xpath(obj.getProperty(exisitnot))).isEmpty()) {
+			int coun = driver.findElements(By.xpath(obj.getProperty(exisitnot))).size();
+			//System.out.println(coun);
+			for(int countof = 0; countof<coun;countof++) {
+				String values = driver.findElements(By.xpath(obj.getProperty(exisitnot))).get(countof).getText();
+				//logger.log(LogStatus.PASS, "Number of elements available are = "+coun);
+				logger.log(LogStatus.PASS, ""+values);
+				//return values;
+			}
+
+
+		} else {
+			logger.log(LogStatus.INFO, "The Element "+exisitnot+" you are trying is not available");
+			//return "The Element "+exisitnot+" you are trying is not available";
+		}
+		//return "";
+	}
+
+	public void ProfileUpdate() throws Exception, InterruptedException, CustomException {
+		String vippointsbeforeupdate = AppValidation("HOME_USER_POINTS"); 
 		
+		try {
+			vipclickupdate();
+			Thread.sleep(1000);
+			//Before profile updte check points
+			
+			logger.log(LogStatus.PASS, "VIP Points Before  Update ="+vippointsbeforeupdate);
+			//Profile icon click
+			ClickEvents("VipProfileIcon");
+			if(!driver.findElements(By.xpath(obj.getProperty("UpdatePopup"))).isEmpty()) {
+				logger.log(LogStatus.PASS, "Profile Yet to Update");
+				getResult1("pass");
+				imagedimesions("BannerDetails3");
+				logger.log(LogStatus.PASS, ""+AppValidation("UpdatePopup"));	
+				imagedimesions("VipPopupBenefits");
+				ClickEvents("confirmbutton");			
+			} else  {
+				logger.log(LogStatus.PASS, "Profile Already Updated");
+			}
+
+			Thread.sleep(1000);
+			getResult1("pass");			
+			if(AppValidation("MyBenefitsheadertitle").equalsIgnoreCase("Profile Update"))  {
+				logger.log(LogStatus.PASS, "User in Profile Page");	
+				if(!AppValidation("TierLevelinProflepage").isEmpty()) {
+					logger.log(LogStatus.PASS, AppValidation("TierLevelinProflepage"));
+				} else {
+					logger.log(LogStatus.FAIL, "Tier Level doest not exists in vip page");
+				}
+				
+				if(AppValidation("Settings_NickName").equalsIgnoreCase("NAME"))  {
+					logger.log(LogStatus.PASS, "Name Title Exists");				
+				} else {
+					logger.log(LogStatus.FAIL, "Name Title DoestNot Exists");
+				}
+				if(!AppValidation("VIPEnterName").isEmpty()) {
+					logger.log(LogStatus.PASS, "Name Already Exists");
+					driver.findElement(By.xpath(obj.getProperty("VIPEnterName"))).clear();
+					ClickEvents("VIPUpdateButton");						
+					getResult1("pass");
+					if(!driver.findElements(By.xpath(obj.getProperty("subscribe_confirm_pop_up1"))).isEmpty()) {
+						logger.log(LogStatus.PASS, AppValidation("subscribe_confirm_pop_up1"));
+						ClickEvents("Ok_button");
+					}else {
+						logger.log(LogStatus.FAIL, "No Error Pop Up");
+						}
+					SendEvent("VIPEnterName", "IMIMOBILEIMIMOBILEIMIMOBILEIMIMOBILEIMIMOBILEIMIMOBILE");
+					String givenText= "IMIMOBILEIMIMOBILEIMIMOBILEIMIMOBILEIMIMOBILEIMIMOBILEs";
+					logger.log(LogStatus.PASS, "Given Text is = "+givenText+ " Length is =  "+givenText.length()+" Name Field Taken Character length :"+AppValidation("VIPEnterName").length());
+
+					}					
+				} 
+
+			
+			if(AppValidation("VIPDobhead").equalsIgnoreCase("DOB"))  {
+				logger.log(LogStatus.PASS, "DOB Title Exists");
+				if(driver.findElement(By.xpath(obj.getProperty("VIPDOB"))).isEnabled()) {
+					logger.log(LogStatus.PASS, "DOB Enabled");
+					ClickEvents("VIPDOB");
+					getResult1("pass");
+					ClickEvents("PreviousDOB");
+					ClickEvents("PreviousDOB");
+					ClickEvents("DOBSelectDate");
+					String SelectedDate = AppValidation("DOBSelectedDateDay");
+					ClickEvents("DOBSYear");
+					ClickEvents("DOBSelectYear");
+					getResult1("pass");
+					String SelectedYear = AppValidation("DOBSYear");					
+					logger.log(LogStatus.PASS, "DOB Selected Date : "+SelectedDate + "Selected Year : "+SelectedYear);
+					ClickEvents("Report_Calender_Ok_Button");
+				} else {
+					logger.log(LogStatus.PASS, "DOB Disabled as user already updated ");
+				}
+			}
+			if(AppValidation("VIPGenderHeader").equalsIgnoreCase("GENDER"))  {
+				logger.log(LogStatus.PASS, "GENDER Title Exists");	
+				if(driver.findElement(By.xpath(obj.getProperty("VIPGenderMale"))).getAttribute("checked").equals("true")) {
+					logger.log(LogStatus.PASS, "Selected is Male");
+				} else {
+					logger.log(LogStatus.PASS, "Selected is Female");
+				}
+				//SelectEvent("VIPGenderMale");
+				//SelectEvent("VIPGenderFeMale");
+			}
+			if(AppValidation("VIPAddressHeader").equalsIgnoreCase("ADDRESS"))  {
+				logger.log(LogStatus.PASS, "ADDRESS Title Exists");	
+				
+				//if(AppValidation("VIPUpdateAddress").isEmpty()) {
+					logger.log(LogStatus.PASS, "Address Field is Empty");
+					SendEvent("VIPUpdateAddress", "Hyderabad, Telangana");					
+				/*} else {
+					logger.log(LogStatus.INFO, "Address Field is Not Empty");
+				}*/	
+				
+			}
+			
+			ClickEvents("VIPUpdateButton");
+			Thread.sleep(2000);	
+			String successmessge =  AppValidation("success_or_failure_pop_up_msg");			
+			if(successmessge.equals("Profile Update Completion - 50 points")) {					
+				logger.log(LogStatus.PASS, "New Profile Updated ="+successmessge);
+				ClickEvents("confirmbutton");
+			}else {
+				logger.log(LogStatus.PASS, "Profile Updated ="+successmessge);
+				ClickEvents("confirmbutton");
+			}	
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		Thread.sleep(2000);
+		waituntillfound("VIP_USER_POINTS");
+		String AfterUpdatePoints = AppValidation("VIP_USER_POINTS");
+		if(AfterUpdatePoints.equalsIgnoreCase(vippointsbeforeupdate)) {
+			logger.log(LogStatus.PASS, "VIP Points are not Updated");
+		} else {
+			logger.log(LogStatus.PASS, "Updated Points are = "+(Integer.parseInt(AfterUpdatePoints) - Integer.parseInt(vippointsbeforeupdate)));
+		}
+	}
+			
+			// 8.1 App
+			
+			/*if(AppValidation("VIPHomeLocation").equalsIgnoreCase("Home Location >"))  {
+				logger.log(LogStatus.PASS, "Home Location Title Exists");
+				ClickEvents("VIPHomeLocation");
+				Thread.sleep(2000);
+				logger.log(LogStatus.PASS, "Navigated to Location");
+				getResult1("pass");
+				swipeBycoordinates(608,1010,70,3);
+				ClickEvents("locationsetnew");
+				getResult1("pass");
+				ClickEvents("updatelocationbutton");
+				Thread.sleep(1000);
+				getResult1("pass");
+				String mesesage = AppValidation("subscribe_confirm_pop_up1");
+				if(mesesage.equalsIgnoreCase("Your new home location successfully updated")) 
+				{			
+					logger.log(LogStatus.INFO, "Success Message ="+mesesage);
+					ClickEvents("confirmbutton");
+				}				
+				ClickEvents("VIPUpdateButton");
+				Thread.sleep(4000);				
+				String successmessge =  AppValidation("success_or_failure_pop_up_msg");
+				getResult1("pass");
+				if(successmessge.equals("Profile Update Completion - 50 points")) {					
+					logger.log(LogStatus.PASS, "New Profile Updated ="+successmessge);
+					ClickEvents("confirmbutton");
+				}else {
+					logger.log(LogStatus.PASS, "Profile Updated ="+successmessge);
+					ClickEvents("confirmbutton");
+				}		
+
+				String AfterUpdatePoints = AppValidation("VIP_USER_POINTS");
+				if(AfterUpdatePoints.equalsIgnoreCase(vippointsbeforeupdate)) {
+					logger.log(LogStatus.PASS, "VIP Points are not Updated");
+				} else {
+					logger.log(LogStatus.PASS, "Updated Points are = "+(Integer.parseInt(AfterUpdatePoints) - Integer.parseInt(vippointsbeforeupdate)));
+				}
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+*/
 	
-	
+
+
+
+
+
 	public void UiSelectorClick(String textclick) {
 		driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().text(\""+textclick+"\")")).click();
-		}
-	
+	}
+
 	public String UiSelectorText(String textclick) {
 		return driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().text(\""+textclick+"\")")).getText();
+	}
+	public void CloseRegister()
+	{
+		if(!driver.findElements(By.xpath(obj.getProperty("closeregister"))).isEmpty()) {
+			try {
+				ClickEvents("closeregister");
+			} catch (IOException | InterruptedException | CustomException e) {
+				// TODO Auto-generated catch block
+				e.getLocalizedMessage();
+			}
+		} else {
+			System.out.println("No Content Popup");
 		}
+		
+	}
 
 
 }

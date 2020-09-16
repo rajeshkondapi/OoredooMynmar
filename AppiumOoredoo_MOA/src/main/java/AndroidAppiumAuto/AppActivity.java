@@ -26,6 +26,7 @@ import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -64,9 +65,10 @@ public class AppActivity extends SupportMethods {
 	@Test(description = "Login Pages", priority = 1, enabled = true)
 	@org.testng.annotations.Parameters(value={"msisdn"})
 	public void LoginPage(String msisdn) throws Exception {
-		System.out.println("msisdn = "+msisdn);
+		//System.out.println("msisdn = "+msisdn);
+		waituntillfound("login");
 		logger = extent.startTest("LoginPage", "Description to LoginPage");
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		propertyelements();	
 		boolean requestotp = AppValidation("login").equalsIgnoreCase("Login");
 		// String eeelements = obj.getProperty(element);
@@ -109,40 +111,44 @@ public class AppActivity extends SupportMethods {
 		contextmethod();
 	}
 	
-	@Test(description =  "VIPHomePage", priority = 4, enabled = true)
+	@Test(description =  "VIP HomePage", priority = 4, enabled = true)
 	public void VIPHomePage() throws Exception, InterruptedException, CustomException {
-		logger = extent.startTest("VIPHomePage", "Description to VIPHomePage");
+		logger = extent.startTest("VIP HomePage", "Description to VIPHomePage");
 		contextmap.clear();
 		vipnewhomepages();
 	}
 
 
-	@Test(description =  "DDD Packs", priority = 5, enabled = false)
+	@Test(description =  "DDD Packs", priority = 5, enabled = true)
 	public void DDDPacks() throws Exception  {
 		logger = extent.startTest("DDD Packs", "Description to DDD PAcks");
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);		
 		ClickEvents("homebtton");
-		propertyelements();		
-		ddbanners();
+		try {
+			ddbanners();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-
-
-	@Test(description =  "PyawPyawYu", priority = 6, enabled = false)
+	@Test(description =  "Pyaw Pyaw Yu", priority = 6, enabled = true)
 	public void PyawPyawYu() throws Exception, InterruptedException, CustomException {
-		logger = extent.startTest("PyawPyawYu", "Description to PyawPyawYu");
+		logger = extent.startTest("Pyaw Pyaw Yu", "Description to PyawPyawYu");
 		ClickEvents("homebtton");
 		pyawpyawTestCase();
-	}
+		
+	}	
 	
 	
-	@Test(description =  "VIPHomePageShortCutIcons", priority = 7, enabled = false)
+	@Test(description =  "VIPHomePageShortCutIcons", priority = 7, enabled = true)
 	public void VIPHomePageShortCutIcons() throws Exception, InterruptedException, CustomException {
 		logger = extent.startTest("VIPHomePageShortCutIcons", "Description to VIPHomePageShortCutIcons"); 
+		waituntillfound("HOME_USER_POINTS");
 		vipclickupdate();
 		List<AndroidElement> shortlist = AppSameList("shortcutTitles");
 		getResult1("pass");	
-		for(int m =0; m<shortlist.size()-1; m++) {
+		for(int m =0; m<5; m++) {
 			shortlist.get(m).click();					
 			logger.log(LogStatus.PASS, "Scrolled to " + shortlist.get(m).getText());
 			Thread.sleep(1000);
@@ -153,14 +159,14 @@ public class AppActivity extends SupportMethods {
 	}	
 	
 	
-	@Test(description = "VIP Spin The Wheel", priority = 8, enabled = false)
+	@Test(description = "VIP Spin The Wheel", priority = 8, enabled = true)
 	public void VipSpinWheel() throws Exception {
 		logger = extent.startTest("VIP Spin The Wheel", "Description to VIP Spin The Wheel");	
 		spinwheel();		
 		}
 	
 	
-	@Test(description = "VIP RedeemPoints", priority = 9, enabled = false)
+	@Test(description = "VIP RedeemPoints", priority = 9, enabled = true)
 	public void VIPRedeemPoints() throws Exception {
 		logger = extent.startTest("VIP RedeemPoints", "Description to VIP RedeemPoints");	
 		Thread.sleep(2000);
@@ -168,7 +174,7 @@ public class AppActivity extends SupportMethods {
 		}
 	
 	
-	@Test(description = "VIP MyDiscounts", priority = 10, enabled = false)
+	@Test(description = "VIP MyDiscounts", priority = 10, enabled = true)
 	public void VIPMyDiscounts() throws Exception {
 		logger = extent.startTest("VIP MyDiscounts", "Description to VIP MyDiscounts");	
 		Thread.sleep(2000);
@@ -176,7 +182,7 @@ public class AppActivity extends SupportMethods {
 		}
 	
 	
-	@Test(description = "VIP MyPoints", priority = 11, enabled = false)
+	@Test(description = "VIP MyPoints", priority = 11, enabled = true)
 	public void VIPMyPoints() throws Exception {
 		logger = extent.startTest("VIP MyPoints", "Description to VIP MyPoints");	
 		Thread.sleep(2000);
@@ -184,35 +190,52 @@ public class AppActivity extends SupportMethods {
 		}
 	
 	
-	@Test(description =  "UpdateLocation", priority = 12, enabled = false)
+	@Test(description =  "UpdateLocation", priority = 12, enabled = true)
 	public void UpdateLocation() throws Exception, InterruptedException, CustomException {
 		logger = extent.startTest("UpdateLocation", "Description to UpdateLocation");
 		updatelocation();	
+		ClickEvents("homebtton");
 	}
 	
 	
-	@Test(description = "VIP EarnMorePoints", priority = 10, enabled = false)
+	@Test(description = "VIP EarnMorePoints", priority = 13, enabled = false)
 	public void VIPEarnMorePoints() throws Exception {
 		logger = extent.startTest("VIPEarnMorePoints", "Description to VIP Earn More Points");	
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		EarnMorePoints();		
 		}
 	
+	
 
-	@Test(description = "VIP MyBenefits", priority = 10, enabled = false)
+	@Test(description = "VIP MyBenefits", priority = 14, enabled = true)
 	public void VIPMyBenefits() throws Exception {
 		logger = extent.startTest("VIPMyBenefits", "Description to MyBenefits");	
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		MyBenefits();		
 		}
-
+	
+	
+	@Test(description = "VIP ProfileUpdate", priority = 15, enabled = true)
+	public void VIPProfileUpdate() throws Exception {
+		logger = extent.startTest("VIP ProfileUpdate", "Description to ProfileUpdate");	
+		//Thread.sleep(7000);
+		//CloseRegister();
+		ClickEvents("homebtton");
+		try {
+			ProfileUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		}
 	
 	// updated on 24/8/20 - only  APP validation
 
-	@Test(description = "ETBanners", priority = 5, enabled = false)
+	@Test(description = "ETBanners", priority = 16, enabled = true)
 	public void BannerDet() throws Exception {
 		logger = extent.startTest("BannerDet", "Description to Entertainment Banners");
 		propertyelements();
+		ClickEvents("homebtton");
 		scrolltill("Entertainment", "Entertainment");
 		Swipe(3, "ETbanners",65);		
 		logger.log(LogStatus.PASS, "Entertainment banners ");		
@@ -231,14 +254,14 @@ public class AppActivity extends SupportMethods {
 
 	// updated on 24/8/20 - only  APP validation
 
-		@Test(description = "QueryBalance", priority = 7, enabled = false)
+		@Test(description = "QueryBalance", priority = 17, enabled = true)
 		public void QueryBalanceApi() throws Exception {
 
 			logger = extent.startTest("QueryBalanceApi", "Description to QueryBalance");
 
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			propertyelements();
-			//ClickEvents("HomeIcon");
+			//propertyelements();
+			ClickEvents("homebtton");
 			// ScrollUp();
 			//driver.navigate().refresh();
 			Map<String, String> AppMap = new HashMap<String, String>();
@@ -325,7 +348,7 @@ public class AppActivity extends SupportMethods {
 		
 		
 		// UPDATED APP SIDE 
-		@Test(description = "LiveTV Details", priority = 8, enabled = false)
+		@Test(description = "LiveTV Details", priority = 18, enabled = true)
 		public void LiveTVDetails() throws Exception {
 
 			logger = extent.startTest("LiveTVDetails", "Description to LiveTVDetails");
@@ -340,16 +363,16 @@ public class AppActivity extends SupportMethods {
 
 		// APPDATED APP SIDE
 
-		@Test(description = "Byop Query Balance", priority = 9, enabled = false)
+		@Test(description = "Byop Query Balance", priority = 19, enabled = true)
 
 		public void ByopQueryBalance() throws Exception {
 			logger = extent.startTest("ByopQueryBalance", "Description to ByopQueryBalance");
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			propertyelements();
-			ScrollUp();
-			ScrollUp();
+			//ScrollUp();
+			//ScrollUp();
 			//ClickEvents("HomeIcon");
-			//ClickEvents("homebtton");
+			ClickEvents("homebtton");
 			scrolltill("byoptitle", "Sate Tine Kya");
 
 			// scrolltill("buymorebyop", "Buy More");
@@ -471,40 +494,32 @@ public class AppActivity extends SupportMethods {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//android.widget.TextView[contains(@resource-id,'com.ooredoo.selfcare:id/agent_name')]")));
 		System.out.println(driver.getDeviceTime());
-
 		ClickEvents("attach");
-
 		driver.navigate().back();
 		driver.navigate().back();
 
 	}
-
+	
 	
 	// log done
-	@Test(description = "Top Up - Voucher", priority = 10, enabled = true)
-	@org.testng.annotations.Parameters(value={"msisdn"})
-	public void TopUpVoucher(String msisdnxml) throws JSONException, InterruptedException, Exception {
-
-		logger = extent.startTest("TopUpVoucher", "Description to TopUpVoucher");
-
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-		ClickEvents("TopUpIcon");
+	@Test(description = "Top Up - Voucher", priority = 10, enabled = false)
+	//@org.testng.annotations.Parameters(value={"msisdn"})
+	public void TopUpVoucher() throws JSONException, InterruptedException, Exception {
 		
-		System.out.println(driver.getPageSource());
-
-		if (AppValidation("Voucher").equalsIgnoreCase("Voucher")) {
-
-			TopUpApp("TopUpText", "Voucher", "topuppin", "Valid", "topupsubmit", "Voucher",msisdnxml);
-
+		logger = extent.startTest("TopUpVoucher", "Description to TopUpVoucher");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		ClickEvents("TopUpIcon");		
+		Thread.sleep(2000);		
+		//System.out.println(driver.getPageSource());		
+	
+		//if (AppValidation("Voucher").equalsIgnoreCase("Voucher")) {
+		TopUpApp("TopUpText", "Voucher", "TopUp_Enter_VoucherCode", "Valid", "TopUp_ConfirmButton", "Voucher","9971357267");
 			// TopUpApp("TopUpText","Voucher","topuppin","Invalid","topupsubmit","Voucher");
 			// TopUpApp("TopUpText","Voucher","topuppin","boundary","topupsubmit","Voucher");
-
 			ClickEvents("HomeIcon");
-
-		}
-
+		//}
 	}
+	
 
 	// log done
 	@Test(description = "Top Up - MPitesan", priority = 11, enabled = false)
@@ -525,8 +540,9 @@ public class AppActivity extends SupportMethods {
 	
 
 	
-
-	@Test(description = "Report an Issue", priority = 14, enabled = false)
+//UPdated as on Sep 04 2020
+	
+	@Test(description = "Report an Issue", priority = 20, enabled = true)
 	public void Report_An_Issue() throws Exception {
 		logger = extent.startTest("Report an Issue", "Description to Report an Issue");
 		propertyelements();
@@ -575,19 +591,20 @@ public class AppActivity extends SupportMethods {
 
 	}
 
-	@Test(description = "More Settings", priority = 15, enabled = false)
+	// Working as of Sep 04 2020
+	@Test(description = "More Settings", priority = 21, enabled = true)
 	public void More_Settings() throws Exception {
 		logger = extent.startTest("Settings (Roam, DND, Lang)", "Description to Settings");
 		propertyelements();
 		Settings();
 
 	}
-
-	@Test(description = "OoredooPlay", priority = 16, enabled = false)
+	// Working as of Sep 04 2020
+	@Test(description = "OoredooPlay", priority = 22, enabled = true)
 	public void Ooredoo_Play() throws Exception {
 		logger = extent.startTest("Ooredoo Play", "Description to Ooredoo Play");
 		propertyelements();
-		ClickEvents("HomeIcon");
+		ClickEvents("homebtton");
 		Ooredoo_Play_sub();
 	}
 
@@ -694,113 +711,22 @@ public class AppActivity extends SupportMethods {
 	}
 
 
-	@Test(description = "Only For You Packs", priority = 18, enabled = false)
-	public void OnlyForYou() throws Exception {
-		logger = extent.startTest("Only For You", "Description to Only For You");
-		ClickEvents("HomeIcon");
-		String balanceBefore = AppValidation("Qbalance");
-		logger.log(LogStatus.INFO, "Balance =" +balanceBefore);
-		scrolltill("OnlyForyou", "Only for you");
-		getResult1("pass");
-		for(int c=1;c<4;c++) {
-			logger.log(LogStatus.INFO, "Only for you Packs Titles " +c +" =" +AppValidation("only4UTitles"));		
-			logger.log(LogStatus.INFO, "Only for you Packs Validities " +c +" ="+AppValidation("only4UValidity"));
-			logger.log(LogStatus.INFO, "Only for you Packs Price " +c +" ="+AppValidation("only4UPrice"));
-		}
-
-		ClickEvents("onlyforpacks");
-		Thread.sleep(3000);
-		getResult1("pass");
-		Thread.sleep(3000);
-		ClickEvents("Ok_button");
-		Thread.sleep(3000);
-		getResult1("pass");		
-		ClickEvents("Ok_button");
-		ScrollUp();
-		Thread.sleep(10000);
-		//ScrollUp();
-		ClickEvents("RefreshBalance");
-		Thread.sleep(2000);
-		getResult1("pass");
-		String balanceAfter = AppValidation("Qbalance");
-		int total = Integer.valueOf(balanceBefore) - Integer.valueOf(balanceAfter);				
-		logger.log(LogStatus.INFO, "Amount Deducted for =" +total);
-		logger.log(LogStatus.INFO, "Balance After =" +balanceAfter);
-
-	}
-
-
+	
 	@Test(description = "Special Voice Data Banners", priority = 18, enabled = false)
 	public void SpecialVoiceData() throws Exception {
 		logger = extent.startTest("Special Voice Data Banners", "Description to Special Voice Data Banners");
-		ClickEvents("HomeIcon");
+		ClickEvents("homebtton");
 		swipeByElements();
 		getResult1("pass");
 	}
 
 	
-	@Test(description="Existing Packages", priority = 20 , enabled=false)
+	@Test(description="Existing Packages", priority = 23 , enabled=true)
 	public void accountview() throws Exception {
 
 		logger = extent.startTest("My Existing Packages", "Description to VIP Points");
 		//DecimalFormat df2 = new DecimalFormat("#.##");
-
-
-		try {
-			propertyelements();
-
-			ClickEvents("HomeIcon");
-			Thread.sleep(2000);
-			ClickEvents("MyAccountClick");			
-
-			//AppValidation("MyNumber");	
-
-			//System.out.println(driver.getPageSource());
-
-			//SelectEvent("bpinternet");
-			logger.log(LogStatus.INFO, "INTERNET");			
-			norecords();	
-
-			Thread.sleep(2000);			
-			//Voice				
-			ClickEvents("voicepackdetails");
-			logger.log(LogStatus.INFO, "VOICE");			
-			norecords();		
-			Thread.sleep(2000);
-			//SMS
-			ClickEvents("smspacks");	
-			logger.log(LogStatus.INFO, "SMS");
-			norecords();
-			Thread.sleep(2000);
-			//My services
-			ClickEvents("myservicespacks");	
-			logger.log(LogStatus.INFO, "MY SERVICES");
-			norecords();
-			Thread.sleep(2000);
-			//KYO Thone
-			ClickEvents("kyothonepackdetails");
-			logger.log(LogStatus.INFO, "KYO THONE");
-			norecords();
-			Thread.sleep(2000);
-			//BONUS
-			ClickEvents("bonuspackdetails");
-			logger.log(LogStatus.INFO, "BONUS");
-			norecords();
-			Thread.sleep(2000);
-			//ROAMING
-			ClickEvents("roamingpackdetails");
-			logger.log(LogStatus.INFO, "ROAMING");
-			norecords();
-
-
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (CustomException e) {
-			e.printStackTrace();
-		}
+		ExistingPacks();
 
 	}
 
@@ -847,13 +773,15 @@ public class AppActivity extends SupportMethods {
 	}
 
 	@BeforeTest
-	@org.testng.annotations.Parameters(value={"config","environment","msisdn"})
-	public void launchapp(String config_file,String environment,String msisdn) throws Exception {
-	//@org.testng.annotations.Parameters(value={"config"})
+	//@org.testng.annotations.Parameters(value={"config","environment","msisdn"})
+	@org.testng.annotations.Parameters(value={"config","msisdn"})
+	public void launchapp(String config_file,String msisdn) throws Exception {
+	//public void launchapp(String config_file,String environment,String msisdn) throws Exception {
+	//@org.testng.annotations.Parameters(value={"config"}) 
 	//public void launchapp(String config_file) throws Exception {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		replacemsisdn(msisdn);
-	//	replacemsisdn("9971357267");	
+		//replacemsisdn("9971357267");	
 		System.out.println("after = "+obj.getProperty("queryotp"));
 		
 		propertyelements();	
@@ -868,8 +796,10 @@ public class AppActivity extends SupportMethods {
 		
 		
 		   System.out.println("config = "+config);	    
-		  org.json.simple.JSONObject jsonObject = (org.json.simple.JSONObject)config;	      
-		  Map<String,String> envs = (Map<String, String>) jsonObject.get("environment");
+		  org.json.simple.JSONObject jsonObject = (org.json.simple.JSONObject)config;	
+		  
+		  
+		  /*Map<String,String> envs = (Map<String, String>) jsonObject.get("environment");
 	      System.out.println(envs.size());
 	     // System.out.println("envs = "+envs);	      
 	      Map<String, String> environ;
@@ -885,7 +815,7 @@ public class AppActivity extends SupportMethods {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}   
+		}   */
 	      
 	      try {
 			Map<String,String> caps = (Map<String, String>) jsonObject.get("capabilities");
@@ -909,24 +839,25 @@ public class AppActivity extends SupportMethods {
 	  
 	         
 	       	
-		//URL url = new URL("http://127.0.0.1:4723/wd/hub");
-		//cap.setCapability(MobileCapabilityType.UDID, "520074b4ee426523");
-		//cap.setCapability(MobileCapabilityType.UDID, "192.168.1.6:4444");
+		URL url = new URL("http://127.0.0.1:4723/wd/hub");
+		cap.setCapability(MobileCapabilityType.UDID, "520074b4ee426523");
+		//cap.setCapability(MobileCapabilityType.UDID, "192.168.1.2:6666");
 		cap.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
 		//cap.setCapability("noReset", "true");
-		//System.setProperty("webdriver.http.factory", "apache");
-		//driver = new AndroidDriver<MobileElement>(url, cap);
-		System.out.println("Added cap = "+cap);
+		System.setProperty("webdriver.http.factory", "apache");
+		cap.setCapability("autoWebView", "true");
+		driver = new AndroidDriver<MobileElement>(url, cap);
+		//System.out.println("Added cap = "+cap);
 		String userName = "srikanthmuthyala3";
 		String accessKey = "nnsoCESaU6obGbqeyb1x";
 
-	    driver = new AndroidDriver<MobileElement>(new URL("https://"+userName+":"+accessKey+"@hub-cloud.browserstack.com/wd/hub"), cap);
+	   // driver = new AndroidDriver<MobileElement>(new URL("https://"+userName+":"+accessKey+"@hub-cloud.browserstack.com/wd/hub"), cap);
 		  
 		
 	    
 		
 		initmethods();
-		//	String now = getDate();
+		//String now = getDate();
 		extent = new ExtentReports(System.getProperty("user.dir") + "\\MOAReport.html", true);
 		extent.addSystemInfo("Host Name", "Ooredoo MOA").addSystemInfo("Environment", "Mobile Automation Testing")
 		.addSystemInfo("User Name", "My Ooredoo Myanmar");

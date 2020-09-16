@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>21/2/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Aug 31 18:05:47 IST 2020</td>
+<td>Started on:</td><td>Tue Sep 15 21:02:27 IST 2020</td>
 </tr>
-<tr><td>Total time:</td><td>37 seconds (37320 ms)</td>
+<tr><td>Total time:</td><td>2798 seconds (2798357 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,14 +75,188 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='AndroidAppiumAuto.AppActivity.TopUpVoucher()'><b>TopUpVoucher</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: Top Up - Voucher<br>Parameters: 9971357267</td>
-<td><div><pre>AndroidAppiumAuto.exceptions.CustomException: The Element Voucher could not find from the application please try again !
-	at AndroidAppiumAuto.CommonMethods.AppValidation(CommonMethods.java:192)
-	at AndroidAppiumAuto.AppActivity.TopUpVoucher(AppActivity.java:490)
-... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1678709153", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1678709153'><pre>AndroidAppiumAuto.exceptions.CustomException: The Element Voucher could not find from the application please try again !
-	at AndroidAppiumAuto.CommonMethods.AppValidation(CommonMethods.java:192)
-	at AndroidAppiumAuto.AppActivity.TopUpVoucher(AppActivity.java:490)
+<td title='AndroidAppiumAuto.AppActivity.ByopQueryBalance()'><b>ByopQueryBalance</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: Byop Query Balance</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //android.widget.TextView[contains(@resource-id, &apos;com.ooredoo.selfcare:id/isb_progress&apos;)] (tried for 30 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at AndroidAppiumAuto.SupportMethods.AppValidationList(SupportMethods.java:56)
+	at AndroidAppiumAuto.AppActivity.ByopQueryBalance(AppActivity.java:386)
+Caused by: org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.212&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, autoGrantPermissions: true, autoWebView: true, automationName: UiAutomator2, databaseEnabled: false, desired: {appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, autoGrantPermissions: true, autoWebView: true, automationName: UiAutomator2, deviceName: uiautomatorviewer, maxInstances: 3, name:  OM Sample Test, platformName: android, platformVersion: 9, udid: 520074b4ee426523}, deviceApiLevel: 28, deviceManufacturer: samsung, deviceModel: SM-A730F, deviceName: 520074b4ee426523, deviceScreenDensity: 480, deviceScreenSize: 1080x2220, deviceUDID: 520074b4ee426523, javascriptEnabled: true, locationContextEnabled: false, maxInstances: 3, name:  OM Sample Test, networkConnectionEnabled: true, pixelRatio: 3, platform: LINUX, platformName: Android, platformVersion: 9, statBarHeight: 72, takesScreenshot: true, udid: 520074b4ee426523, viewportRect: {height: 2004, left: 0, top: 72, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: a1dbdcba-4904-4496-be6f-0ef5ce8bcc9f
+*** Element info: {Using=xpath, value=//android.widget.TextView[contains(@resource-id, &apos;com.ooredoo.selfcare:id/isb_progress&apos;)]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:152)
+	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElementByXPath(AndroidDriver.java:1)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 27 more
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1327542306", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1327542306'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //android.widget.TextView[contains(@resource-id, &apos;com.ooredoo.selfcare:id/isb_progress&apos;)] (tried for 30 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at AndroidAppiumAuto.SupportMethods.AppValidationList(SupportMethods.java:56)
+	at AndroidAppiumAuto.AppActivity.ByopQueryBalance(AppActivity.java:386)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.212&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, autoGrantPermissions: true, autoWebView: true, automationName: UiAutomator2, databaseEnabled: false, desired: {appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, autoGrantPermissions: true, autoWebView: true, automationName: UiAutomator2, deviceName: uiautomatorviewer, maxInstances: 3, name:  OM Sample Test, platformName: android, platformVersion: 9, udid: 520074b4ee426523}, deviceApiLevel: 28, deviceManufacturer: samsung, deviceModel: SM-A730F, deviceName: 520074b4ee426523, deviceScreenDensity: 480, deviceScreenSize: 1080x2220, deviceUDID: 520074b4ee426523, javascriptEnabled: true, locationContextEnabled: false, maxInstances: 3, name:  OM Sample Test, networkConnectionEnabled: true, pixelRatio: 3, platform: LINUX, platformName: Android, platformVersion: 9, statBarHeight: 72, takesScreenshot: true, udid: 520074b4ee426523, viewportRect: {height: 2004, left: 0, top: 72, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: a1dbdcba-4904-4496-be6f-0ef5ce8bcc9f
+*** Element info: {Using=xpath, value=//android.widget.TextView[contains(@resource-id, &apos;com.ooredoo.selfcare:id/isb_progress&apos;)]}
+	at sun.reflect.GeneratedConstructorAccessor58.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:152)
+	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElementByXPath(AndroidDriver.java:1)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 27 more
+</pre></div></td>
+<td>116</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.VIPMyBenefits()'><b>VIPMyBenefits</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: VIP MyBenefits</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.212&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, autoGrantPermissions: true, autoWebView: true, automationName: UiAutomator2, databaseEnabled: false, desired: {appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, autoGrantPermissions: true, autoWebView: true, automationName: UiAutomator2, deviceName: uiautomatorviewer, maxInstances: 3, name:  OM Sample Test, platformName: android, platformVersion: 9, udid: 520074b4ee426523}, deviceApiLevel: 28, deviceManufacturer: samsung, deviceModel: SM-A730F, deviceName: 520074b4ee426523, deviceScreenDensity: 480, deviceScreenSize: 1080x2220, deviceUDID: 520074b4ee426523, javascriptEnabled: true, locationContextEnabled: false, maxInstances: 3, name:  OM Sample Test, networkConnectionEnabled: true, pixelRatio: 3, platform: LINUX, platformName: Android, platformVersion: 9, statBarHeight: 72, takesScreenshot: true, udid: 520074b4ee426523, viewportRect: {height: 2004, left: 0, top: 72, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: a1dbdcba-4904-4496-be6f-0ef5ce8bcc9f
+*** Element info: {Using=xpath, value=//android.widget.LinearLayout[contains(@resource-id,&apos;com.ooredoo.selfcare:id/llBuyPacks&apos;)][2]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:152)
+	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElementByXPath(AndroidDriver.java:1)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at AndroidAppiumAuto.CommonMethods.MyBenefits(CommonMethods.java:1263)
+	at AndroidAppiumAuto.AppActivity.VIPMyBenefits(AppActivity.java:213)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace208875036", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace208875036'><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;WLPT761&apos;, ip: &apos;172.16.40.212&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_261&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, autoGrantPermissions: true, autoWebView: true, automationName: UiAutomator2, databaseEnabled: false, desired: {appActivity: com.ooredoo.selfcare.Ooredoo, appPackage: com.ooredoo.selfcare, autoGrantPermissions: true, autoWebView: true, automationName: UiAutomator2, deviceName: uiautomatorviewer, maxInstances: 3, name:  OM Sample Test, platformName: android, platformVersion: 9, udid: 520074b4ee426523}, deviceApiLevel: 28, deviceManufacturer: samsung, deviceModel: SM-A730F, deviceName: 520074b4ee426523, deviceScreenDensity: 480, deviceScreenSize: 1080x2220, deviceUDID: 520074b4ee426523, javascriptEnabled: true, locationContextEnabled: false, maxInstances: 3, name:  OM Sample Test, networkConnectionEnabled: true, pixelRatio: 3, platform: LINUX, platformName: Android, platformVersion: 9, statBarHeight: 72, takesScreenshot: true, udid: 520074b4ee426523, viewportRect: {height: 2004, left: 0, top: 72, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: a1dbdcba-4904-4496-be6f-0ef5ce8bcc9f
+*** Element info: {Using=xpath, value=//android.widget.LinearLayout[contains(@resource-id,&apos;com.ooredoo.selfcare:id/llBuyPacks&apos;)][2]}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:152)
+	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElementByXPath(AndroidDriver.java:1)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at AndroidAppiumAuto.CommonMethods.MyBenefits(CommonMethods.java:1263)
+	at AndroidAppiumAuto.AppActivity.VIPMyBenefits(AppActivity.java:213)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -109,8 +283,121 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>17</td>
-<td>AndroidAppiumAuto.AppActivity@704a52ec</td></tr>
+<td>1089</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.BannerDet()'><b>BannerDet</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: ETBanners</td>
+<td></td>
+<td>96</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.DDDPacks()'><b>DDDPacks</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: DDD Packs</td>
+<td></td>
+<td>37</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.GetOtp()'><b>GetOtp</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: Fetch OTP</td>
+<td></td>
+<td>12</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.LiveTVDetails()'><b>LiveTVDetails</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: LiveTV Details</td>
+<td></td>
+<td>52</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.LoginPage()'><b>LoginPage</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: Login Pages<br>Parameters: 9971357267</td>
+<td></td>
+<td>7</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.More_Settings()'><b>More_Settings</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: More Settings</td>
+<td></td>
+<td>77</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.Ooredoo_Play()'><b>Ooredoo_Play</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: OoredooPlay</td>
+<td></td>
+<td>111</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.PyawPyawYu()'><b>PyawPyawYu</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: Pyaw Pyaw Yu</td>
+<td></td>
+<td>108</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.QueryBalanceApi()'><b>QueryBalanceApi</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: QueryBalance</td>
+<td></td>
+<td>25</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.Report_An_Issue()'><b>Report_An_Issue</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: Report an Issue</td>
+<td></td>
+<td>86</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.UpdateLocation()'><b>UpdateLocation</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: UpdateLocation</td>
+<td></td>
+<td>46</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.VIPEarnMorePoints()'><b>VIPEarnMorePoints</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: VIP EarnMorePoints</td>
+<td></td>
+<td>20</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.VIPHomePage()'><b>VIPHomePage</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: VIP HomePage</td>
+<td></td>
+<td>45</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.VIPHomePageShortCutIcons()'><b>VIPHomePageShortCutIcons</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: VIPHomePageShortCutIcons</td>
+<td></td>
+<td>84</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.VIPMyDiscounts()'><b>VIPMyDiscounts</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: VIP MyDiscounts</td>
+<td></td>
+<td>90</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.VIPMyPoints()'><b>VIPMyPoints</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: VIP MyPoints</td>
+<td></td>
+<td>118</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.VIPProfileUpdate()'><b>VIPProfileUpdate</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: VIP ProfileUpdate</td>
+<td></td>
+<td>98</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.VIPRedeemPoints()'><b>VIPRedeemPoints</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: VIP RedeemPoints</td>
+<td></td>
+<td>153</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.VipSpinWheel()'><b>VipSpinWheel</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: VIP Spin The Wheel</td>
+<td></td>
+<td>76</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.accountview()'><b>accountview</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: Existing Packages</td>
+<td></td>
+<td>140</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
+<tr>
+<td title='AndroidAppiumAuto.AppActivity.contextpopup()'><b>contextpopup</b><br>Test class: AndroidAppiumAuto.AppActivity<br>Test method: Contextual Popup</td>
+<td></td>
+<td>70</td>
+<td>AndroidAppiumAuto.AppActivity@57e1b0c</td></tr>
 </table><p>
 </body>
 </html>

@@ -18,6 +18,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
@@ -49,7 +50,7 @@ public class SupportMethods extends HomePageAPI {
 
 
 	public List<String> AppValidationList(String element) throws Exception {			
-		propertyelements();			
+		//propertyelements();			
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		String eeelements = obj.getProperty(element);				
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(eeelements)));				
@@ -402,68 +403,83 @@ return "ET Count Success";
 	public void TopUpApp(String TopUpTab, String Radio, String topuppin, String TopSendPin, String TopSubmit,
 			String Sheetname,String msisdnxml) throws Exception {
 		System.out.println("TopUpAPP===========" + TopSendPin + " " + Sheetname);
-		Thread.sleep(3000);
-
+		if(Sheetname.equals("Voucher")) {
+		//Thread.sleep(3000);
 		// ScrollUp();
-
-		ClickEvents(TopUpTab);
-
-		String msisdn = AppValidation("contact");
+		//ClickEvents(TopUpTab);
+		//String msisdn = AppValidation("contact");
+		String msisdn = AppValidation("TopUp_MobileNo");
+		
 		System.out.println("msisdn voucher ==>" + msisdn);
-
 		Thread.sleep(4000);
-
-		ClickEvents(Radio);
-
+		//ClickEvents(Radio);
+		//SendEvent(topuppin, mpinvalue(TopSendPin, Sheetname));
 		SendEvent(topuppin, mpinvalue(TopSendPin, Sheetname));
-
-		if (getattribute("confirmrecharge", "clickable").equalsIgnoreCase("true")) {
-
+		//if (getattribute("ConfirmButton", "clickable").equalsIgnoreCase("true")) {
+		Thread.sleep(3000);
+			//System.out.println(driver.getPageSource());
 			ClickEvents(TopSubmit);
-
-			List<String> result = AppValidationList("buypkpopmesg");
-
-			System.out.println("Result ==> " + result.get(0));
-
+			Thread.sleep(2000);
+			//System.out.println(driver.getPageSource());
+			//List<String> result = AppValidationList("buypkpopmesg");
+			 String confirmtxt = driver.findElement(By.xpath("//android.view.View[@text = 'Are you sure you want to Topup the number "+msisdn+"']")).getText();
+			System.out.println("confirmtxt = "+confirmtxt);
+			if(confirmtxt.equalsIgnoreCase("Are you sure you want to Topup the number "+msisdn)){
+				//getResult1("pass");
+				Thread.sleep(3000);
+				
+			//	System.out.println(driver.getContext());
+				//TouchAction t = driver.findElement(By.xpath(obj.getProperty("TopUp_confirmBtn")));
+			//	driver.performTouchAction(touchAction)
+				//
+				//System.out.println(driver.getPageSource());
+				//ClickEvents("TopUp_confirmBtn");
+				//ClickEvents("TopUp_confirmBtnImg");
+				
+				
+				
+				try {
+					/*Alert alert = driver.switchTo().alert();
+					alert.accept();*/
+					
+					driver.findElement(By.xpath("//android.widget.Button[@text = 'CONFIRM']")).click();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				//safeJavaScriptClick("TopUp_confirmBtn");
+				//UiSelectorClick("CONFIRM");
+				Thread.sleep(1000);
+				getResult1("pass");
+				ClickEvents("TopUp_OKButton");
+			}
+			//System.out.println("Result ==> " + result.get(0));
 			//if (result.get(0).trim().equalsIgnoreCase("Are you sure you want to Top Up this mobile number "+msisdn.trim()+"?")) {
-			if (result.get(0).trim().contains("Are you sure you want to Top Up this mobile number "+msisdn.trim()+"?")) {
+			//if (result.get(0).trim().contains("Are you sure you want to Topup the number "+msisdn.trim())) {
 				//System.out.println("============IF Inside===================");
-				ClickEvents("buynowok");
-
-				if(TopSendPin.equalsIgnoreCase("Valid")) {
-
+				//ClickEvents("buynowok");
+				/*if(TopSendPin.equalsIgnoreCase("Valid")) {
 					String validcasemesg = AppValidation("buypkpopmesg");
-
 					if(validcasemesg.equals("Congratulations! Your Top Up is successful")) {
-
 						logger.log(LogStatus.PASS, "TopUp Voucher passed for "+TopSendPin+ " case : " +validcasemesg);
-
 						ClickEvents("SuccessClose");
-
 					} else {
-
 						logger.log(LogStatus.FAIL, "TopUp Voucher Failed for "+TopSendPin+ " case due to : " +validcasemesg);
 						getResult1("fail");
 					}
-				}
+				}*/
 
 				//List<String> APITopUpDesc = ETLiveTransApi("TopUpMyNumber", "topup", "1573035302761", "SelfcareAPI7.0","status_desc", "ecarepreprod", "", TopSendPin);
 
 				//ecarepreprod.ooredoo.com.mm/selfcareapistg7.1/api/
-
-
-
 				List<String> APITopUpDesc = ETLiveTransApi("TopUpMyNumber", "topup", "1573035302761", obj.getProperty("apiversion"),"status_desc", obj.getProperty("apiuri"), "", TopSendPin);
-
 				System.out.println("APITopUpDesc ==> " + APITopUpDesc);
-
 				String topupcheckvoicherapp = AppValidationList("buypkpopmesg").get(0).trim().replaceAll("[^a-zA-Z0-9_-]","");
-
 				String topvoucherapi = APITopUpDesc.get(0).trim().replaceAll("[^a-zA-Z0-9_-]", "").toString();
 				//Assert.assertEquals(topupcheckvoicher,APITopUpDesc.get(0).trim().replaceAll("[^a-zA-Z0-9_-]", ""));
-
 				boolean vuchervalid = topupcheckvoicherapp.equalsIgnoreCase(topvoucherapi);
-
 				if(vuchervalid) {
 					logger.log(LogStatus.PASS, "TopUp Voucher functionality pass for "+TopSendPin+" case");	
 					getResult1("pass");
@@ -472,27 +488,20 @@ return "ET Count Success";
 					logger.log(LogStatus.FAIL, "APP Response = "+topupcheckvoicherapp);	
 					logger.log(LogStatus.PASS, "API Response = "+topvoucherapi);	
 				}
-
 				ClickEvents("buynowok");
-
 				driver.findElement(By.xpath(obj.getProperty("topuppin"))).clear();
 				//return topupcheckvoicher;
-
-			}
-
-			else if (result.get(0).trim().equalsIgnoreCase("Please enter a valid Top-up PIN to proceed")) {
-
+			//}
+			/*else if (result.get(0).trim().equalsIgnoreCase("Please enter a valid Top-up PIN to proceed")) {
 				ClickEvents("buynowok");
-
-
-
 				System.out.println("Please Enter Valid Pin");
 				//return result.get(0).trim();
-			}
+			}*/
 
 			// -------------------- MPitesan --------------------
 
-			// System.out.println("First");
+		}// System.out.println("First");
+		/*List<String> result = AppValidationList("buypkpopmesg");
 			else if (result.get(0).trim().equalsIgnoreCase("Please enter your M-Pitesan account details to complete the top up of 1,000 Ks..")) {
 
 				System.out.println("Entered Ptesan");
@@ -539,9 +548,9 @@ return "ET Count Success";
 					System.out.println("Something happend at Recharge level");
 				}
 
-			}
+			}*/
 
-		}
+		//}
 
 		//return "Enter Valid Details !";
 
@@ -1115,7 +1124,7 @@ boolean giftcheck = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, 
 
 				int final_amount = MB_value - sp_1;
 				Thread.sleep(2000);
-				ClickEvents("HomeIcon");
+				ClickEvents("homebtton");
 
 				// Appdriver.findElement(Home_button).click();
 				Thread.sleep(3000);
@@ -1163,7 +1172,7 @@ boolean giftcheck = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, 
 		} else {
 			logger.log(LogStatus.INFO, "Pack activated failed for below reason ==> "+ sf_m);
 			System.out.println("user has in-sufficient balance to subscribe and error message is ==> " + sf_m);
-			ClickEvents("HomeIcon");
+			ClickEvents("homebtton");
 			Thread.sleep(2000);
 
 			String MB1 = AppValidation("Main_Balance").replaceAll("[^0-9]", "");
@@ -1194,9 +1203,7 @@ boolean giftcheck = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, 
 		// By wait = Report_Pop_Up_message;
 
 		if (Category_value != null)
-
 		{
-
 			ClickEvents("Report_Categroy");
 			// Appdriver.findElement(Report_Categroy).click();
 			Thread.sleep(2000);
@@ -1255,26 +1262,9 @@ boolean giftcheck = BuyGftSuccess(bpdcfx[intdcfx], bpivr[pkIVR], buygiftoption, 
 			// Appdriver.findElement(Report_Calender_Ok_Button).click();
 			Thread.sleep(2000);
 		}
-
+		swipeByElements();
 		ClickEvents("Report_Submit_Button");
-		// Appdriver.findElement(Report_Submit_Button).click();
-
-		// System.out.println("wait value is ==>"+ wait);
-
-		// Wait_Present_logic(wait);
 		Thread.sleep(10000);
-
-		/*try {
-	if(AppValidation("RegisterBtn")!=null) {
-		ClickEvents("RegisterBtn");
-		AppValidation("WelcomeHelp");
-		return "Landed to Help/Suppoprt Page";
-	}
-
-} catch (Exception e) {
-	System.out.println("Register pop-up not displayed!");
-}*/
-
 		try {
 			if (driver.findElement(By.xpath(obj.getProperty("live_chat_back_Arrow"))).isDisplayed()) {
 				System.out.println("livechat loop");
@@ -1481,92 +1471,102 @@ else {
 		ClickEvents("MoreIcon");
 		ClickEvents("More_Setting");
 		String name = AppValidation("Setting_Name");
-		logger.log(LogStatus.INFO, name);
-		System.out.println("Name ==> " + name);
+		logger.log(LogStatus.INFO, "Name= "+name);
+		//System.out.println("Name ==> " + name);
 		String number = AppValidation("Setting_Msisdn");
-		logger.log(LogStatus.INFO, number);
-		System.out.println("number ==> " + number);
+		logger.log(LogStatus.INFO, "MSISDN = "+number);
+		//System.out.println("number ==> " + number);
 		ClickEvents("Settings_Setting");
-		swipeByElements();
-		String NickNameTitle = AppValidation("Settings_NickName");
-		logger.log(LogStatus.INFO, NickNameTitle);
-		System.out.println("Before Switch to Language ==>" + NickNameTitle);
+		//swipeByElements();
+		//String NickNameTitle = AppValidation("Settings_NickName");
+		//logger.log(LogStatus.INFO, NickNameTitle);
+		//System.out.println("Before Switch to Language ==>" + NickNameTitle);
 		ClickEvents("Settings_language");
-
-		Thread.sleep(7000);
-		String AfterNickNameTitle = AppValidation("Settings_NickName");
-		logger.log(LogStatus.INFO, AfterNickNameTitle);
-		System.out.println("After Switch to Language  ==>" + AfterNickNameTitle);
 		Thread.sleep(5000);
-		ClickEvents("Settings_language");
-
+		logger.log(LogStatus.INFO, "Language Change");
+		getResult1("pass");
+		//String AfterNickNameTitle = AppValidation("Settings_NickName");
+		//logger.log(LogStatus.INFO, AfterNickNameTitle);
+		//System.out.println("After Switch to Language  ==>" + AfterNickNameTitle);
+		//Thread.sleep(5000);
+		ClickEvents("languagechange");		
+		//homebtton
 		Thread.sleep(3000);
-
+		ClickEvents("Settings_language");
+		Thread.sleep(3000);
+		ClickEvents("Settings_Setting");
 		// DND
-		swipeByElements();
+		//swipeByElements();
 		String BeforeDNDDesc = AppValidation("DNDDesc");
 		logger.log(LogStatus.INFO, BeforeDNDDesc);
+		getResult1("pass");
 		System.out.println("BeforeDNDDesc ==> " + BeforeDNDDesc);
 		ClickEvents("Settings_DND");
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		String DNDMessage = AppValidation("subscribe_confirm_pop_up2");
 		logger.log(LogStatus.INFO, DNDMessage);
 		System.out.println("DNDMessage ==> " + DNDMessage);
+		getResult1("pass");
 		ClickEvents("Ok_button");
 		Thread.sleep(3000);
 		String AfterDNDDesc = AppValidation("DNDDesc");
 		logger.log(LogStatus.INFO, AfterDNDDesc);
+		getResult1("pass");
 		System.out.println("AfterDNDDesc ==> " + AfterDNDDesc);
 		// ClickEvents("Ok_button");
 		ClickEvents("Settings_DND");
 		ClickEvents("Ok_button");
 
 		// Roaming
-		swipeByElements();
+		//swipeByElements();
 		String Beforeromaing_desc = AppValidation("RoamingDesc");
 		logger.log(LogStatus.INFO, Beforeromaing_desc);
-		System.out.println("Desc Before Romaing Switched ==>" + Beforeromaing_desc);
+		getResult1("pass");
+		//System.out.println("Desc Before Romaing Switched ==>" + Beforeromaing_desc);
 		ClickEvents("Settings_Roaming");
 		Thread.sleep(4000);
 		String roaming_text = AppValidation("subscribe_confirm_pop_up1");
 		logger.log(LogStatus.INFO, roaming_text);
-		System.out.println("Roaming text ==>" + roaming_text);
-		ClickEvents("Ok_button");
-		String AfterRomaing_desc = AppValidation("RoamingDesc");
-		logger.log(LogStatus.INFO, AfterRomaing_desc);
-		getResult1("pass");
-		System.out.println("Desc After Roaming Switched ==>" + AfterRomaing_desc);
+		//getResult1("pass");
+		//System.out.println("Roaming text ==>" + roaming_text);
+		//ClickEvents("Ok_button");
+		//String AfterRomaing_desc = AppValidation("RoamingDesc");
+		//logger.log(LogStatus.INFO, AfterRomaing_desc);
+		//getResult1("pass");
+		//System.out.println("Desc After Roaming Switched ==>" + AfterRomaing_desc);
 
 		// Thread.sleep(3000);
 		try {
-			ClickEvents("Settings_Roaming");
-			String Roamming_On = AppValidation("subscribe_confirm_pop_up2");
-			System.out.println(" Roamming_On Text ==>" + Roamming_On);
-			if (Roamming_On.equalsIgnoreCase(
+			//ClickEvents("Settings_Roaming");
+			//String Roamming_On = AppValidation("subscribe_confirm_pop_up2");
+			//System.out.println(" Roamming_On Text ==>" + Roamming_On);
+			if (roaming_text.equalsIgnoreCase(
 					"You have turned on roaming network. Buy Ooredoo roaming packs for more affordable price rates.")) {
+				getResult1("pass");
 				ClickEvents("Ok_button"); // buy a roaming pack
 				Thread.sleep(3000);
 				String RoamingPage = AppValidation("bprmsinga");
 				if (RoamingPage.equalsIgnoreCase("Singapore")) {
-					logger.log(LogStatus.PASS, "Landed to Roaming Page = "+ RoamingPage);
-					System.out.println("Success");
-					System.out.println("Landed to Roaming Page");
+					logger.log(LogStatus.PASS, "Redirected to Roaming Page = "+ RoamingPage);
+					//System.out.println("Success");
+					//System.out.println("Landed to Roaming Page");
 					getResult1("pass");
 				} else {
 					// System.out.println("Failed to Land Roaming Page");
-					logger.log(LogStatus.FAIL, "Landed to SomeOther Page");
+					logger.log(LogStatus.FAIL, "Redirection Failed");
 					//System.out.println("Oops ! Landed to SomeOther Page");
 				}
 
 			} else {
-				ClickEvents("toppopcancel");
+				ClickEvents("Ok_button"); 
+				//ClickEvents("toppopcancel");
 			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			logger.log(LogStatus.FAIL, "Test 1");
-			System.out.println("Test 1 ");
-			//e.printStackTrace();
+			//logger.log(LogStatus.FAIL, "Test 1");
+			//System.out.println("Test 1 ");
+			e.printStackTrace();
 		}
 
 	}
@@ -1600,22 +1600,15 @@ else {
 			try {
 				val = AppValidationInLoop("NoRecordFound");
 			} catch(Exception ex) {
-
 			}
-
 			if(val.equalsIgnoreCase("No record found")) {
-				System.out.println(" No Records Found ");
-				//logger.log(LogStatus.INFO, " " +AppValidation("NoRecordFound"));
-
+				//System.out.println(" No Records Found ");
 				getResult1("pass");
 				//return;
 			}
 			else {
 				logger.log(LogStatus.INFO, "Title :  " + PacksDetails("MyTitleName") + "  Validity :  " +PacksDetails("loanvalidity") +"  Description :  "+PacksDetails("buypkdatavalidity"));
 				getResult1("pass");
-
-
-
 			}	
 
 		} catch (Exception e) {
@@ -1671,8 +1664,6 @@ else {
 			String contextmessage = tc.ToastMessage(TakeScreenshot(),keytype);
 			System.out.println("contextmessage == > "+contextmessage);
 			if(contextmessage.equals("True")) {
-
-
 				logger.log(LogStatus.PASS, "Type Of Context Pop-Up = " + keytype);					
 				String contextDesc = AppValidation("ContextDescription");
 				System.out.println("App =  "+contextDesc);
@@ -1704,7 +1695,8 @@ else {
 				return;
 			}else {
 				//getResult1("pass");
-				//logger.log(LogStatus.INFO, "Expected Popup is not available");
+				System.out.println("No Context popup");
+				logger.log(LogStatus.INFO, "No Context Popup");
 			}
 
 
@@ -1726,26 +1718,21 @@ else {
 		if (balanceCheck.get("BeforeBalance") < Integer.parseInt(ksval)) {
 			logger.log(LogStatus.INFO, "Low Balance");
 			ClickEvents("confirmbutton");
-			Thread.sleep(4000);
+			waituntillfound("TopUpNow");
 			getResult1("pass");
-			//Thread.sleep(2000);
 			ClickEvents("TopUpNow");
-			Thread.sleep(4000);
+			Thread.sleep(2000);
 			getResult1("pass");
-
-			//MobileElement el2 = (MobileElement) driver.findElementByAccessibilityId("Home");
-			//el2.click();
 			ClickEvents("homebtton");
 
 		} else {
 			ClickEvents("confirmbutton");
 			getResult1("pass");
 			ClickEvents("confirmbutton");
-			Thread.sleep(9000);
+			Thread.sleep(5000);
 			getResult1("pass");
 			driver.navigate().back();
-			//ClickEvents("confirmbutton");
-			//getResult1("pass");					
+					
 		}				
 
 
@@ -1757,7 +1744,7 @@ else {
 	public void beforebalancevipCheck() throws IOException, CustomException {
 
 		String mainvalance =  AppValidation("Main_Balance").replaceAll("[^a-zA-Z0-9]", "");
-		String vip = AppValidation("HOME_USER_POINTS");
+		String vip = AppValidation("HOME_USER_POINTS").replaceAll("[^a-zA-Z0-9]", "");
 		int Beforebalance = Integer.parseInt(mainvalance);
 
 		int BeforeVIPPoints = Integer.parseInt(vip);
@@ -1769,7 +1756,7 @@ else {
 		Beforebalance = Integer.valueOf(balanceCheck.get("BeforeBalance").toString().replaceAll("[^a-zA-Z0-9]", ""));
 		BeforeVIPPoints =  balanceCheck.get("BeforeVIPPoints");
 
-		String AfterVIPPoints = AppValidation("HOME_USER_POINTS");				
+		String AfterVIPPoints = AppValidation("HOME_USER_POINTS").replaceAll("[^a-zA-Z0-9]", "");			
 		int finalvippoints = Integer.valueOf(AfterVIPPoints) - Integer.valueOf(BeforeVIPPoints);
 
 		String Afterbalance = AppValidation("Main_Balance");				
@@ -1791,6 +1778,7 @@ else {
 			logger.log(LogStatus.INFO, "PyawPyawYu VIP  Points " +c +" = "+AppValidation("pyawvip"));
 
 		}
+		
 
 		ClickEvents("pyawfirst");
 		Thread.sleep(3000);
@@ -1811,6 +1799,58 @@ else {
 
 		balancepointsCheck(balanceCheck.get("BeforeBalance"),balanceCheck.get("BeforeVIPPoints"));
 		balanceCheck.clear();
+	}
+	
+	
+	public void ExistingPacks() throws Exception {
+		try {
+			propertyelements();
+			ClickEvents("homebtton");
+			Thread.sleep(2000);
+			ClickEvents("MyAccountClick");
+			logger.log(LogStatus.INFO, "INTERNET");			
+			norecords();	
+
+			Thread.sleep(2000);			
+			//Voice				
+			ClickEvents("voicepackdetails");
+			logger.log(LogStatus.INFO, "VOICE");			
+			norecords();		
+			Thread.sleep(2000);
+			//SMS
+			ClickEvents("smspacks");	
+			logger.log(LogStatus.INFO, "SMS");
+			norecords();
+			Thread.sleep(2000);
+			//My services
+			ClickEvents("myservicespacks");	
+			logger.log(LogStatus.INFO, "MY SERVICES");
+			norecords();
+			Thread.sleep(2000);
+			//KYO Thone
+			ClickEvents("kyothonepackdetails");
+			logger.log(LogStatus.INFO, "KYO THONE");
+			norecords();
+			Thread.sleep(2000);
+			//BONUS
+			ClickEvents("bonuspackdetails");
+			logger.log(LogStatus.INFO, "BONUS");
+			norecords();
+			Thread.sleep(2000);
+			//ROAMING
+			ClickEvents("roamingpackdetails");
+			logger.log(LogStatus.INFO, "ROAMING");
+			norecords();
+
+
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (CustomException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

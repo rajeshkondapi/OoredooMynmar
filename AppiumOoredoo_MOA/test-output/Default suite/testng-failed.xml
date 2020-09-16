@@ -6,10 +6,9 @@
       <class name="AndroidAppiumAuto.AppActivity">
         <methods>
           <include name="getResult"/>
-          <include name="GiftPackGift"/>
+          <include name="TopUpVoucher"/>
           <include name="launchapp"/>
           <include name="tearDown"/>
-          <include name="BuyPackBuy"/>
         </methods>
       </class> <!-- AndroidAppiumAuto.AppActivity -->
     </classes>
